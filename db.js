@@ -62,9 +62,8 @@ pool.on('error', function (err) {
  * ===================================================
  */
 
-
-// const allClothingModelsFunction = require('./models/clothing');
-// const clothingModelsObject = allClothingModelsFunction( pool );
+const allClothingModelsFunction = require('./models/clothing');
+const clothingModelsObject = allClothingModelsFunction( pool );
 
 const allUsersModelsFunction = require('./models/users');
 const usersModelsObject = allUsersModelsFunction( pool );
@@ -96,5 +95,5 @@ module.exports = {
    * ADD APP MODELS HERE
    */
   users: usersModelsObject,
-  // clothing: clothingModelsObject
+  clothing: clothingModelsObject
 };

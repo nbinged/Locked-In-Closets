@@ -8,10 +8,10 @@ var sha256 = require('js-sha256');
 module.exports = (dbPoolInstance) => {
 
 //GETS ALL OF THE USERS CLOTHING ITEMS
-    let getAllClothes = (user_id,callback) => {
+    let getAllClothes = (username,callback) => {
 
-        let query = 'SELECT * FROM clothing WHERE user_id = $1';
-        let values = [user_id];
+        let query = 'SELECT * FROM clothing WHERE username = $1';
+        let values = [username];
 
         dbPoolInstance.query(query,values, (error, queryResult) => {
             if (error) {

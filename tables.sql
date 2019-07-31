@@ -7,6 +7,7 @@ CREATE TABLE IF NOT EXIST. users (
 CREATE TABLE IF NOT EXISTS clothing (
     id SERIAL PRIMARY KEY,
     user_id INTEGER,
+    username TEXT,
     item_name TEXT,
     item_brand TEXT,
     item_size TEXT,

@@ -50,7 +50,9 @@ module.exports = (db) => {
             if (callback) {
                 db.users.logInUser(username, password,(error, callback) => {
                     if (callback) {
-                        response.cookie('logged_in', sha256(callback[0].username+"logged in"+SALT));
+
+                        let hashedCookie = sha256(callback[0].username+'logged_in'+SALT);
+                        response.cookie('logged_in', hashedCookie);
                         response.cookie('username', callback[0].username);
                         response.redirect('/home');
                         console.log('logged in')
@@ -67,16 +69,50 @@ module.exports = (db) => {
     };
 
     let logoutControllerCallback = (request, response) => {
-        res.clearCookie('logged_in');
-        res.clearCookie('username');
-        res.redirect('/login');
+        response.clearCookie('logged_in');
+        response.clearCookie('username');
+        response.redirect('/login');
     };
+
+    let homepageControllerCallback = (request, response) => {
+        let cookieName = request.cookies.username;
+        console.log(cookieName)
+        let storedCookie = request.cookies.logged_in;
+        console.log(storedCookie)
+
+        if (storedCookie === undefined) {
+            response.send('please log in!')
+
+        } else {
+            db.clothing.getAllClothes(cookieName, (error, data) => {
+                if (error) {
+                    console.log("error in getting file", error);
+
+                } else {
+
+                    let sessionCookieCheck = sha256(cookieName+'logged_in'+SALT)
+
+                    if ( storedCookie === sessionCookieCheck ) {
+                        let data = {
+                            allclothes : data
+                        }
+                        response.render('home', data);
+                    } else {
+                        response.send('Username or password is wrong')
+                    }
+                }
+
+            });
+        };
+    };
+
 
     /**
      * ===========================================
      * Export controller functions as a module
      * ===========================================
      */
+
     return {
 
         showRegister: showRegisterControllerCallback,
@@ -84,7 +120,9 @@ module.exports = (db) => {
 
         showlogin: showLoginControllerCallback,
         login: loginControllerCallback,
-        logout: logoutControllerCallback
+        logout: logoutControllerCallback,
+
+        homepage: homepageControllerCallback
     };
 
 }
