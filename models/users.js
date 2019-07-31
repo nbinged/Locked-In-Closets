@@ -50,11 +50,27 @@ module.exports = (dbPoolInstance) => {
         });
     };
 
+    let logInUser = (username, password, callback) => {
+
+        let query = 'SELECT username FROM users WHERE username = $1 AND password = $2';
+        let values = [username, password];
+        dbPoolInstance.query(query, values, (error, queryResult) => {
+            if (error) {
+                callback(error, null);
+            } else {
+                if (queryResult.rows.length > 0) {
+                    callback(null, queryResult.rows);
+                } else {
+                    callback(null, null);
+                }
+            }
+        });
+    };
+
     return {
 
         checkUserAccount,
-        registerUser
-        // logInUser,
-        // getAllUsers
+        registerUser,
+        logInUser
     };
 };

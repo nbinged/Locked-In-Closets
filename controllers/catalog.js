@@ -32,23 +32,45 @@ module.exports = (db) => {
                         response.redirect('/home');
                     }
                     else {
-                        response.redirect('/?err=server');
+                        response.redirect('/?err=register');
                     }
                 });
             }
         });
     };
 
+    let showLoginControllerCallback = (request, response) => {
+      response.render('login');
+    };
 
-    // let logout = (request, response) => {
-    //   response.clearCookie('user_id');
-    //   response.clearCookie('loggedin');
-    //   response.redirect('/login');
-    // };
+    let loginControllerCallback = (request, response) => {
+        let username = request.body.username;
+        let password = sha256(request.body.password);
+        db.users.checkUserAccount(username,(error, callback) => {
+            if (callback) {
+                db.users.logInUser(username, password,(error, callback) => {
+                    if (callback) {
+                        response.cookie('logged_in', sha256(callback[0].username+"logged in"+SALT));
+                        response.cookie('username', callback[0].username);
+                        response.redirect('/home');
+                        console.log('logged in')
+                    }
+                    else {
+                        response.redirect('/?err=login');
+                    }
+                });
+            }
+            else {
+                response.redirect('/?err=login')
+            }
+        });
+    };
 
-    // let redirect = (request, response) => {
-    //   response.redirect('/home');
-    // };
+    let logoutControllerCallback = (request, response) => {
+        res.clearCookie('logged_in');
+        res.clearCookie('username');
+        res.redirect('/login');
+    };
 
     /**
      * ===========================================
@@ -58,15 +80,11 @@ module.exports = (db) => {
     return {
 
         showRegister: showRegisterControllerCallback,
-        register: registerControllerCallback
+        register: registerControllerCallback,
 
-
-        // login: loginControllerCallback,
-        // logout_user: logoutUserControllerCallback,
-        // add_Item: addItemControllerCallback,
-        // single_user: singleUserControllerCallback,
-        // edit_Item: editItemControllerCallback,
-        // delete_Item: deleteItemControllerCallback,
+        showlogin: showLoginControllerCallback,
+        login: loginControllerCallback,
+        logout: logoutControllerCallback
     };
 
 }
