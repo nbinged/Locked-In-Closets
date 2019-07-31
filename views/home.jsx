@@ -6,13 +6,14 @@ class login extends React.Component {
     let addItemURL = `/add`;
     let editItemURL = `/edit`;
     let deleteItemURL = `/delete`;
+    let clothesListing;
 
     let clothes = this.props.allclothes;
 
-    if (clothes.length > 0 ) {
-        let clothesListing = clothes.map(oneItem => (<li>{oneItem.item_name}</li>));
+    if (clothes !== null ) {
+        clothesListing = clothes.map(oneItem => (<li>{oneItem.item_name}</li>));
     } else {
-        let clothesListing = '';
+        clothesListing = '';
     }
 
     return (

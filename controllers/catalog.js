@@ -92,17 +92,18 @@ module.exports = (db) => {
 
                     if ( storedCookie === sessionCookieCheck ) {
 
-                        if (callbackdata === null){
+                        // if (callbackdata === null){
 
-                            response.send('NEW USER HAS NO DATA')
+                        //     response.send('NEW USER HAS NO DATA')
 
-                        } else {
+                        // }
+                        // else {
 
                             let data = {
                                 allclothes : callbackdata
                             }
                             response.render('home', data);
-                        }
+                        // }
 
                     } else {
                         response.send('Username or password is wrong')
