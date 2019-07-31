@@ -55,7 +55,7 @@ module.exports = (db) => {
                         response.cookie('logged_in', hashedCookie);
                         response.cookie('username', callback[0].username);
                         response.redirect('/home');
-                        console.log('logged in')
+                        console.log('User is logged in')
                     }
                     else {
                         response.redirect('/?err=login');
@@ -76,15 +76,13 @@ module.exports = (db) => {
 
     let homepageControllerCallback = (request, response) => {
         let cookieName = request.cookies.username;
-        console.log(cookieName)
         let storedCookie = request.cookies.logged_in;
-        console.log(storedCookie)
 
         if (storedCookie === undefined) {
             response.send('please log in!')
 
         } else {
-            db.clothing.getAllClothes(cookieName, (error, data) => {
+            db.clothing.getAllClothes(cookieName, (error, callbackdata) => {
                 if (error) {
                     console.log("error in getting file", error);
 
@@ -93,10 +91,19 @@ module.exports = (db) => {
                     let sessionCookieCheck = sha256(cookieName+'logged_in'+SALT)
 
                     if ( storedCookie === sessionCookieCheck ) {
-                        let data = {
-                            allclothes : data
+
+                        if (callbackdata === null){
+
+                            response.send('NEW USER HAS NO DATA')
+
+                        } else {
+
+                            let data = {
+                                allclothes : callbackdata
+                            }
+                            response.render('home', data);
                         }
-                        response.render('home', data);
+
                     } else {
                         response.send('Username or password is wrong')
                     }

@@ -8,18 +8,16 @@ class login extends React.Component {
     let deleteItemURL = `/delete`;
 
     let clothes = this.props.allclothes;
-    // console.log(student)
-    let clothesListing = clothes.map(oneItem => {
-        return (<li>{oneItem.item_name}</li>);
-    })
+
+    if (clothes.length > 0 ) {
+        let clothesListing = clothes.map(oneItem => (<li>{oneItem.item_name}</li>));
+    } else {
+        let clothesListing = '';
+    }
 
     return (
 
     <default>
-
-        <head>
-        <head/>
-
          <body>
 
             <h1>Welcome to your wardrobe</h1>
@@ -35,10 +33,9 @@ class login extends React.Component {
             <br/>
 
         </body>
-
     </default>
-    );
-  }
+
+  )};
 }
 
 module.exports = login;
