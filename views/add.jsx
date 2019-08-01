@@ -17,29 +17,29 @@ class add extends React.Component {
             <form enctype="multipart/form-data" action="/add" method="POST">
 
                 <p>Item Name:</p>
-                <input type={"text"} name={"item_name"} required/>
+                <input type="text" name="item_name" required/>
 
                 <p>Brand:</p>
-                <input type={"text"} name={"item_brand"}/>
+                <input type="text" name="item_brand"/>
 
                 <p>Size:</p>
-                <input type={"text"} name={"item_size"}/>
+                <input type="text" name="item_size"/>
 
                 <p>Color:</p>
-                <input type={"text"} name={"item_color"}/>
+                <input type="text" name="item_color"/>
 
                 <p>Catergories:</p>
-                <input type={"text"} name={"item_catergories"} required/>
+                <input type="text" name="item_catergories" required/>
 
                 <p>Upload Your own picture</p>
                   <input type="file" name="image_file"/>
-                  <input type="submit" class="btn btn-primary"/>
 
                 <br/>
                 <br/>
 
-                <input type="submit" value="Submit"/>
+                <input type="submit" class="btn btn-primary"/>
             </form>
+
     </Default>
 
     );
@@ -47,3 +47,7 @@ class add extends React.Component {
 }
 
 module.exports = add;
+
+                // <input type="hidden" name="user_id" value={this.props.cookie}/>
+
+                            // <img src="uploads/image_file-1564644991077JW_M05SkiJacket1.webp" />

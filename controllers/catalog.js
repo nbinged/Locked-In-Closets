@@ -1,8 +1,10 @@
 var sha256 = require('js-sha256');
 var cloudinary = require('cloudinary');
-var configForCloudinary = require("../config.json")
-
+var multer = require('multer');
+var upload = multer({ dest: './uploads/' });
 const SALT = "salt";
+
+var configForCloudinary = require("../config.json")
 
 module.exports = (db) => {
 
@@ -124,11 +126,14 @@ module.exports = (db) => {
         let cookieName = request.cookies.username;
         let storedCookie = request.cookies.logged_in;
 
+        //console.log("Request body-form: ", request.body)
+        console.log("Req img file: ",request.file.path)
+
         if (storedCookie === undefined) {
             response.send('please log in!')
 
         } else {
-            db.clothing.addSingleClothing(cookieName, (error, callback) => {
+            db.clothing.addSingleClothing(request.body, request.file.path, (error, callback) => {
                 if (error) {
                     console.log("error in getting file", error);
 
@@ -138,8 +143,11 @@ module.exports = (db) => {
 
                     if ( storedCookie === sessionCookieCheck ) {
 
+                        console.log('Got into cookie check')
+
                          let data = {
-                                allclothes : callback
+                                allclothes : callback,
+                                // user_id : request.cookies.id
                             }
 
                             response.render('add', data);
@@ -148,8 +156,8 @@ module.exports = (db) => {
                         response.send('Username or password is wrong')
                     }
                 }
-            });
-        };
+            })
+        }
     };
 
     let logoutControllerCallback = (request, response) => {

@@ -1,0 +1,1 @@
+                <input type="hidden" name="user_id" value={this.props.cookie}/>

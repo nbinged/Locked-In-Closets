@@ -17,7 +17,7 @@ class login extends React.Component {
             (<Col><div>
                 <ul>
                 {oneItem.item_name}
-                <img src ={oneItem.item_image_url}/>
+                <img src ={oneItem.image_file}/>
 
                 <form action={editItemURL} method="GET">
                 <input type="submit" value="Edit Item"/>
