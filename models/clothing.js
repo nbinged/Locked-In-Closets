@@ -34,10 +34,28 @@ module.exports = (dbPoolInstance) => {
         });
     };
 
+    let viewSingleItem = (clothing_id, callback) => {
+        let query = 'SELECT * FROM clothing WHERE id = $1';
+        let values = [clothing.id];
+
+        dbPoolInstance.query(query, (error, queryResult) => {
+            if (error) {
+                callback(error, null);
+            } else {
+                if (queryResult.rows.length > 0) {
+                    callback(null, queryResult.rows[0]);
+                } else {
+                    callback(null, null);
+
+                }
+            }
+        });
+    }
+
 //Adds a clothing item to the database.
     let addSingleClothing = (form, callback) => {
-        let query = 'INSERT INTO clothing (user_id,item_name,item_brand,item_size,item_color,item_catergories,item_image_url) VALUES ($1,$2,$3,$4,$5,$6,$7) RETURNING *';
-        let values = [form.user_id, form.name, form.brand, form.size, form.color, form.catergories, form.imageurl];
+        let query = 'INSERT INTO clothing (item_name,item_brand,item_size,item_color,item_catergories,image_file) VALUES ($1,$2,$3,$4,$5,$6) RETURNING *';
+        let values = [form.name, form.brand, form.size, form.color, form.catergories, form.image_file];
         dbPoolInstance.query(query, values, (error, queryResult) => {
             if (error) {
 
@@ -58,27 +76,9 @@ module.exports = (dbPoolInstance) => {
         });
     }
 
-    let viewSingleItem = (clothing_id, callback) => {
-        let query = 'SELECT * FROM clothing WHERE id = $1';
-        let values = [clothing.id];
-
-        dbPoolInstance.query(query, (error, queryResult) => {
-            if (error) {
-                callback(error, null);
-            } else {
-                if (queryResult.rows.length > 0) {
-                    callback(null, queryResult.rows[0]);
-                } else {
-                    callback(null, null);
-
-                }
-            }
-        });
-    }
-
     let editSingleItem = (form, callback)=>{
-        let query = 'UPDATE clothing SET (user_id, item_name, item_brand, item_size, item_color, item_catergories, item_image_url) VALUES ($1,$2,$3,$4,$5,$6,$7) RETURNING *';
-        let values = [form.user_id, form.name, form.brand, form.size, form.color,form.catergories, form.imageurl];
+        let query = 'INSERT INTO clothing (item_name,item_brand,item_size,item_color,item_catergories,image_file) VALUES ($1,$2,$3,$4,$5,$6) RETURNING *';
+        let values = [form.name, form.brand, form.size, form.color, form.catergories, form.image_file];
 
         dbPoolInstance.query(query,values,(error, queryResult) => {
             if (error) {

@@ -1,7 +1,6 @@
 var sha256 = require('js-sha256');
-// var cloudinary = require('cloudinary');
-// var configForCloudinary = require("../config.json");
-// cloudinary.config(configForCloudinary);
+var cloudinary = require('cloudinary');
+var configForCloudinary = require("../config.json")
 
 const SALT = "salt";
 
@@ -68,12 +67,6 @@ module.exports = (db) => {
         });
     };
 
-    let logoutControllerCallback = (request, response) => {
-        response.clearCookie('logged_in');
-        response.clearCookie('username');
-        response.redirect('/login');
-    };
-
     let homepageControllerCallback = (request, response) => {
         let cookieName = request.cookies.username;
         let storedCookie = request.cookies.logged_in;
@@ -91,19 +84,10 @@ module.exports = (db) => {
                     let sessionCookieCheck = sha256(cookieName+'logged_in'+SALT)
 
                     if ( storedCookie === sessionCookieCheck ) {
-
-                        // if (callbackdata === null){
-
-                        //     response.send('NEW USER HAS NO DATA')
-
-                        // }
-                        // else {
-
                             let data = {
                                 allclothes : callbackdata
                             }
                             response.render('home', data);
-                        // }
 
                     } else {
                         response.send('Username or password is wrong')
@@ -114,6 +98,65 @@ module.exports = (db) => {
         };
     };
 
+    let showItemControllerCallback = (request, response) => {
+        let cookieName = request.cookies.username;
+        let storedCookie = request.cookies.logged_in;
+
+        if (storedCookie === undefined) {
+            response.send('please log in!')
+
+
+            } else {
+
+                    let sessionCookieCheck = sha256(cookieName+'logged_in'+SALT)
+
+                    if ( storedCookie === sessionCookieCheck ) {
+                         response.render('add');
+                    }
+
+                        else {
+                            response.send('Something went wrong')
+                        }
+                }
+    };
+
+    let addItemControllerCallback = (request, response) => {
+        let cookieName = request.cookies.username;
+        let storedCookie = request.cookies.logged_in;
+
+        if (storedCookie === undefined) {
+            response.send('please log in!')
+
+        } else {
+            db.clothing.addSingleClothing(cookieName, (error, callback) => {
+                if (error) {
+                    console.log("error in getting file", error);
+
+                } else {
+
+                    let sessionCookieCheck = sha256(cookieName+'logged_in'+SALT)
+
+                    if ( storedCookie === sessionCookieCheck ) {
+
+                         let data = {
+                                allclothes : callback
+                            }
+
+                            response.render('add', data);
+
+                    } else {
+                        response.send('Username or password is wrong')
+                    }
+                }
+            });
+        };
+    };
+
+    let logoutControllerCallback = (request, response) => {
+        response.clearCookie('logged_in');
+        response.clearCookie('username');
+        response.redirect('/login');
+    };
 
     /**
      * ===========================================
@@ -130,7 +173,10 @@ module.exports = (db) => {
         login: loginControllerCallback,
         logout: logoutControllerCallback,
 
-        homepage: homepageControllerCallback
+        homepage: homepageControllerCallback,
+
+        showAddItem: showItemControllerCallback,
+        addItem: addItemControllerCallback
     };
 
 }

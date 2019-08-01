@@ -1,4 +1,5 @@
 const React = require('react');
+var Default = require('./layouts/default');
 
 class register extends React.Component {
   render() {
@@ -9,7 +10,7 @@ class register extends React.Component {
 
     return (
 
-    <default>
+    <Default>
             <h1>Welcome to Catalog</h1>
             <h3>Create your account to make your own digital clothing archive</h3>
 
@@ -27,7 +28,7 @@ class register extends React.Component {
             <form action={loginURL}>
                 <button type={"submit"}>Login</button>
             </form>
-    </default>
+    </Default>
 
     );
   }

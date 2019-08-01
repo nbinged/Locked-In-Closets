@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS clothing (
     item_size TEXT,
     item_color TEXT,
     item_catergories TEXT,
-    item_image_url TEXT,
+    image_file TEXT,
     create_at TIMESTAMP DEFAULT now()
 );
 

@@ -1,4 +1,6 @@
 const React = require('react');
+var Default = require('./layouts/default');
+import { Container, Row, Col } from 'reactstrap';
 
 class login extends React.Component {
   render() {
@@ -11,32 +13,50 @@ class login extends React.Component {
     let clothes = this.props.allclothes;
 
     if (clothes !== null ) {
-        clothesListing = clothes.map(oneItem => (<li>{oneItem.item_name}</li>));
+        clothesListing = clothes.map(oneItem =>
+            (<Col><div>
+                <ul>
+                {oneItem.item_name}
+                <img src ={oneItem.item_image_url}/>
+
+                <form action={editItemURL} method="GET">
+                <input type="submit" value="Edit Item"/>
+                </form>
+
+                <form action={deleteItemURL} method="GET">
+                <input type="submit" value="Delete Item"/>
+                </form>
+            </ul>
+            </div></Col>));
+
     } else {
         clothesListing = '';
     }
 
     return (
 
-    <default>
+    <Default>
          <body>
 
             <h1>Welcome to your wardrobe</h1>
 
-          <ul>
-            {clothesListing}
-          </ul>
+        <Row>
+                {clothesListing}
+        </Row>
+
+            <br/>
 
             <form action={addItemURL}>
                 <button type={"submit"}>Add new clothes</button>
             </form>
 
-            <br/>
 
         </body>
-    </default>
+    </Default>
 
   )};
 }
 
 module.exports = login;
+
+

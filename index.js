@@ -27,6 +27,8 @@ app.set('view engine', 'jsx');
 app.engine('jsx', reactEngine);
 app.use(express.static(__dirname+'/public/'));
 
+var multer = require('multer');
+var upload = multer({ dest: './uploads/' });
 /**
  * ===================================
  * ===================================
