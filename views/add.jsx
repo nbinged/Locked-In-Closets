@@ -38,6 +38,13 @@ class add extends React.Component {
                 <br/>
 
                 <input type="submit" class="btn btn-primary"/>
+
+                <input type="hidden" name="user_id" value={this.props.cookie}/>
+                <input type="hidden" name="user_id" value={this.props.cookie}/>
+
+
+
+
             </form>
 
     </Default>
@@ -48,6 +55,6 @@ class add extends React.Component {
 
 module.exports = add;
 
-                // <input type="hidden" name="user_id" value={this.props.cookie}/>
 
-                            // <img src="uploads/image_file-1564644991077JW_M05SkiJacket1.webp" />
+
+                // Use the above code to add the add in username and id everytime the user add an item.

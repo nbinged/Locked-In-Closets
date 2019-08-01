@@ -4,7 +4,13 @@ var multer = require('multer');
 var upload = multer({ dest: './uploads/' });
 const SALT = "salt";
 
-var configForCloudinary = require("../config.json")
+cloudinary.config({
+ cloud_name: 'dskhk41q0',
+ api_key: '132425881292614',
+ api_secret: 'FbwoeN7oPBRCBwv-Z1n_kQcq4U4'
+});
+
+// var envForCloudinary = require("../index.env")
 
 module.exports = (db) => {
 
@@ -28,8 +34,9 @@ module.exports = (db) => {
             else {
                 db.users.registerUser(username, password,(error, callback) => {
                     if (callback) {
-                        response.cookie('logged_in', sha256(callback[0].username+"logged in"+SALT));
+                        response.cookie('logged_in', sha256(callback[0].username+"loggedin"+SALT));
                         response.cookie('username', callback[0].username);
+                        response.cookie('userID', callback[0].id)
                         response.redirect('/home');
                     }
                     else {
@@ -52,9 +59,10 @@ module.exports = (db) => {
                 db.users.logInUser(username, password,(error, callback) => {
                     if (callback) {
 
-                        let hashedCookie = sha256(callback[0].username+'logged_in'+SALT);
+                        let hashedCookie = sha256(callback[0].username+'loggedin'+SALT);
                         response.cookie('logged_in', hashedCookie);
                         response.cookie('username', callback[0].username);
+                        response.cookie('userID', callback[0].id);
                         response.redirect('/home');
                         console.log('User is logged in')
                     }
@@ -83,7 +91,7 @@ module.exports = (db) => {
 
                 } else {
 
-                    let sessionCookieCheck = sha256(cookieName+'logged_in'+SALT)
+                    let sessionCookieCheck = sha256(cookieName+'loggedin'+SALT)
 
                     if ( storedCookie === sessionCookieCheck ) {
                             let data = {
@@ -107,11 +115,8 @@ module.exports = (db) => {
         if (storedCookie === undefined) {
             response.send('please log in!')
 
-
             } else {
-
-                    let sessionCookieCheck = sha256(cookieName+'logged_in'+SALT)
-
+                    let sessionCookieCheck = sha256(cookieName+'loggedin'+SALT)
                     if ( storedCookie === sessionCookieCheck ) {
                          response.render('add');
                     }
@@ -123,46 +128,30 @@ module.exports = (db) => {
     };
 
     let addItemControllerCallback = (request, response) => {
-        let cookieName = request.cookies.username;
-        let storedCookie = request.cookies.logged_in;
 
-        //console.log("Request body-form: ", request.body)
-        console.log("Req img file: ",request.file.path)
+            cloudinary.uploader.upload(request.file.path, function(result) {
 
-        if (storedCookie === undefined) {
-            response.send('please log in!')
+                // Cloudinary::Uploader.upload("cld_unicorn.jpg", :use_filename => "true", :background_removal => "cloudinary_ai")
 
-        } else {
-            db.clothing.addSingleClothing(request.body, request.file.path, (error, callback) => {
-                if (error) {
-                    console.log("error in getting file", error);
+                console.log(result)
 
-                } else {
+                    db.clothing.addSingleClothing(request.body,result.url, (error, callback) => {
 
-                    let sessionCookieCheck = sha256(cookieName+'logged_in'+SALT)
+                    console.log('cloudinary result url', result.url)
 
-                    if ( storedCookie === sessionCookieCheck ) {
+                    let data = {
+                                allclothes : callback
+                                    }
 
-                        console.log('Got into cookie check')
-
-                         let data = {
-                                allclothes : callback,
-                                // user_id : request.cookies.id
-                            }
-
-                            response.render('add', data);
-
-                    } else {
-                        response.send('Username or password is wrong')
-                    }
-                }
-            })
-        }
+                    response.render('add', data);
+                });
+        })
     };
 
     let logoutControllerCallback = (request, response) => {
         response.clearCookie('logged_in');
         response.clearCookie('username');
+        response.clearCookie('userID');
         response.redirect('/login');
     };
 

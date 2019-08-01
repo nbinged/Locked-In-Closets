@@ -35,13 +35,14 @@ module.exports = (dbPoolInstance) => {
 
     let registerUser = (username, password, callback) => {
 
-        let query = 'INSERT INTO users (username, password) VALUES($1,$2) RETURNING username';
+        let query = 'INSERT INTO users (username, password) VALUES($1,$2) RETURNING *';
         let values = [username, password];
         dbPoolInstance.query(query, values, (error, queryResult) => {
             if (error) {
                 callback(error, null);
             } else {
                 if (queryResult.rows.length > 0) {
+                    console.log('users model',queryResult.rows)
                     callback(null, queryResult.rows);
                 } else {
                     callback(null, null);
@@ -52,7 +53,7 @@ module.exports = (dbPoolInstance) => {
 
     let logInUser = (username, password, callback) => {
 
-        let query = 'SELECT username FROM users WHERE username = $1 AND password = $2';
+        let query = 'SELECT * FROM users WHERE username = $1 AND password = $2';
         let values = [username, password];
         dbPoolInstance.query(query, values, (error, queryResult) => {
             if (error) {
@@ -74,3 +75,4 @@ module.exports = (dbPoolInstance) => {
         logInUser
     };
 };
+

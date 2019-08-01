@@ -19,7 +19,7 @@ module.exports = (app, allModels) => {
     /*
      *  =========================================
      *  =========================================
-     *  =========================================
+     *  ================================                    sq
      *  =========================================
      *    ALL ROUTES FOR CONTROLLER
      *  =========================================
@@ -40,6 +40,7 @@ module.exports = (app, allModels) => {
 
     app.get('/add', controllerCallbacks.showAddItem);
     app.post('/add', upload.single('image_file'),controllerCallbacks.addItem);
-    // app.post('/add', controllerCallbacks.addItem);
+
+    app.get('/logout', controllerCallbacks.logout);
 };
 

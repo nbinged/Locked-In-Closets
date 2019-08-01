@@ -23,14 +23,30 @@ class Default extends React.Component {
                             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
+
                     <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
                         <ul className="navbar-nav">
+
                             <li className="nav-item">
-                                <a className="nav-link" href="outfits/">Outfits</a>
+                                <a className="nav-link" href="/outfits">Outfits</a>
                             </li>
+
                             <li className="nav-item">
-                                <a className="nav-link" href="lookbook/">Lookbook</a>
+                                <a className="nav-link" href="/lookbook">Lookbook</a>
                             </li>
+
+                            <li className="nav-item">
+                                <a className="nav-link" href="/login">Login</a>
+                            </li>
+
+                            <li className="nav-item">
+                                <a className="nav-link" href="/logout">Logout</a>
+                            </li>
+
+                            <li className="nav-item">
+                                <a className="nav-link" href="/register">Register</a>
+                            </li>
+
                         </ul>
                     </div>
                 </nav>
