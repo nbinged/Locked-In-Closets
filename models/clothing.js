@@ -45,7 +45,7 @@ module.exports = (dbPoolInstance) => {
         let cloudUrl = cloud
 
         let query = 'INSERT INTO clothing (user_id, username,item_name, item_brand, item_size, item_color, item_catergories, image_file) VALUES ($1,$2,$3,$4,$5,$6,$7,$8) RETURNING *';
-        let values = [form.user_id,form.username,form.item_name, form.item_brand, form.item_size, form.item_color, form.item_catergories, cloudUrl];
+        let values = [form.user_id, form.username, form.item_name, form.item_brand, form.item_size, form.item_color, form.item_catergories, cloudUrl];
 
         dbPoolInstance.query(query, values, (error, queryResult) => {
             if (error) {
