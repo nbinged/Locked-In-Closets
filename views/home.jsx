@@ -16,8 +16,10 @@ class login extends React.Component {
         clothesListing = clothes.map(oneItem =>
             (<Col><div>
                 <ul>
+
+                <a href={'/item/'+oneItem.id}><img src ={oneItem.image_file}/></a>
+
                 {oneItem.item_name}
-                <img src ={oneItem.image_file}/>
 
                 <form action={editItemURL} method="GET">
                 <input type="submit" value="Edit Item"/>

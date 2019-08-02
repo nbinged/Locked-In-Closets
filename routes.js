@@ -43,8 +43,7 @@ module.exports = (app, allModels) => {
 
     app.get('/logout', controllerCallbacks.logout);
 
-    // app.get('/item/id', controllerCallbacks.getViewItem);
-    // app.post('/item/', controllerCallbacks.postViewItem);
+    app.get('/item/:id', controllerCallbacks.getViewedItem);
 
     // app.get('/edit/id', controllerCallbacks.getEditItem);
     // app.post('/edit/', controllerCallbacks.postEditItem);
@@ -52,5 +51,7 @@ module.exports = (app, allModels) => {
     // app.post('/delete/id', controllerCallbacks.getDeleteItem);
     // app.delete('/delete/', controllerCallbacks.deleteItem);
 };
+
+
 
 

@@ -4,16 +4,13 @@ var Default = require('./layouts/default');
 class add extends React.Component {
   render() {
 
-    // console.log(this.props);
-    console.log('user cookie',this.props.cookies);
-    console.log('username cookie')
+    let props = this.props;
 
     return (
 
     <Default>
             <h1>New Clothes Form</h1>
             <h3>Please enter the details of the item of clothing you would like to add to your archive.</h3>
-
 
             <form enctype="multipart/form-data" action="/add" method="POST">
 

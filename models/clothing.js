@@ -35,23 +35,24 @@ module.exports = (dbPoolInstance) => {
     };
 
 //Adds a clothing item to the database.
-    let addSingleClothing = (form, cloud, callback) => {
+    let addSingleClothing = (form, cloud, cookies, callback) => {
 
         // For multer (form, cloud, image, callback)
         // console.log("Form which is req body: ", form)
         // console.log("Image name: ", typeof image)
 
         // let upload = image.replace('public/','')
-        let cloudUrl = cloud
+        let cloudUrl = cloud;
 
         let query = 'INSERT INTO clothing (user_id, username,item_name, item_brand, item_size, item_color, item_catergories, image_file) VALUES ($1,$2,$3,$4,$5,$6,$7,$8) RETURNING *';
-        let values = [form.user_id, form.username, form.item_name, form.item_brand, form.item_size, form.item_color, form.item_catergories, cloudUrl];
+        let values = [cookies.userID,cookies.username,form.item_name, form.item_brand, form.item_size, form.item_color, form.item_catergories, cloudUrl];
 
         dbPoolInstance.query(query, values, (error, queryResult) => {
             if (error) {
 
                 // invoke callback function with results after query has executed
                 callback(error, null);
+                console.log('error')
 
             } else {
 
@@ -61,6 +62,7 @@ module.exports = (dbPoolInstance) => {
                     callback(null, queryResult.rows);
                     // console.log('model database');
                     console.log(queryResult.rows);
+                    console.log('it works')
 
                 } else {
                     callback(null, null);
@@ -70,29 +72,30 @@ module.exports = (dbPoolInstance) => {
         });
     }
 
-    // let viewSingleItem = (clothing_id, callback) => {
+    let viewSingleItem = (clothing_id, callback) => {
 
-    //     let clothing_id = clothing.id];
-    //     let query = 'SELECT * FROM clothing WHERE id = $1';
-    //     let values = [clothing.id];
+        let query = 'SELECT * FROM clothing WHERE id = $1';
+        let values = [clothing_id];
 
-    //     dbPoolInstance.query(query, (error, queryResult) => {
-    //         if (error) {
-    //             callback(error, null);
-    //         } else {
-    //             if (queryResult.rows.length > 0) {
-    //                 callback(null, queryResult.rows[0]);
-    //             } else {
-    //                 callback(null, null);
+        dbPoolInstance.query(query,values, (error, queryResult) => {
+            if (error) {
+                callback(error, null);
+            } else {
+                if (queryResult.rows.length > 0) {
+                    callback(null, queryResult.rows[0]);
+                } else {
+                    callback(null, null);
 
-    //             }
-    //         }
-    //     });
-    // }
+                }
+            }
+        });
+    }
 
-    let editSingleItem = (form, callback)=>{
-        let query = 'INSERT INTO clothing (item_name,item_brand,item_size,item_color,item_catergories,image_file) VALUES ($1,$2,$3,$4,$5,$6) RETURNING *';
-        let values = [form.name, form.brand, form.size, form.color, form.catergories, form.image_file];
+    let editSingleItem = (form, itemID, callback)=>{
+
+        let query = 'UPDATE clothing SET VALUES (item_name, item_brand, item_size, item_color, item_catergories, image_file) WHERE id = $8 RETURNING *';
+
+        let values = [form.item_name, form.item_brand, form.item_size, form.item_color, form.item_catergories, form.image_file, itemID];
 
         dbPoolInstance.query(query,values,(error, queryResult) => {
             if (error) {
@@ -109,26 +112,25 @@ module.exports = (dbPoolInstance) => {
         });
     }
 
-    let deleteSingleItem = (clothing_id,callback)=>{
-        let query = "DELETE FROM clothing WHERE id = $1";
-        let values = [clothing_id];
-        dbPoolInstance.query(query,values,(error, queryResult) => {
-            if (error) {
-                callback(error, null);
-                console.log("Error")
-            } else {
+    // let deleteSingleItem = (clothing_id,callback)=>{
+    //     let query = "DELETE FROM clothing WHERE id = $1";
+    //     let values = [clothing_id];
+    //     dbPoolInstance.query(query,values,(error, queryResult) => {
+    //         if (error) {
+    //             callback(error, null);
+    //             console.log("Error")
+    //         } else {
 
-                    callback(null, true);
-            }
-        });
-    }
+    //                 callback(null, true);
+    //         }
+    //     });
+    // }
 
     return {
         getAllClothes,
         addSingleClothing,
-        // viewSingleItem,
+        viewSingleItem,
         editSingleItem,
-        deleteSingleItem
-
+        // deleteSingleItem
     };
 };

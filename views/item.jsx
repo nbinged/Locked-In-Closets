@@ -1,6 +1,6 @@
 const React = require('react');
 var Default = require('./layouts/default');
-import { Container, Row, Col } from 'reactstrap';
+
 
 class item extends React.Component {
   render() {
@@ -8,52 +8,44 @@ class item extends React.Component {
     let addItemURL = `/add`;
     let editItemURL = `/edit`;
     let deleteItemURL = `/delete`;
-    let clothesListing;
 
-    let clothes = this.props.allclothes;
-
-        clothesListing = clothes.map(oneItem =>
-
-            (<Col><div>
-                <ul>
-                {oneItem.item_name}
-                <img src ={oneItem.image_file}/>
-
-                <form action={editItemURL} method="GET">
-                <input type="submit" value="Edit Item"/>
-                </form>
-
-                <form action={deleteItemURL} method="GET">
-                <input type="submit" value="Delete Item"/>
-                </form>
-            </ul>
-            </div></Col>));
+    let requestedclothes = this.props.allclothes;
+    console.log(requestedclothes);
 
     return (
 
-    <Default>
-         <body>
+        <Default>
+             <body>
 
-            <h1>Welcome to your wardrobe</h1>
+                <h1>Here is your item</h1>
 
-        <Row>
-                {clothesListing}
-        </Row>
+                <img src ={requestedclothes.image_file}/>
 
-            <br/>
+                <br/>
 
-            <form action={editItemURL}>
-                <button type={"submit"}>Edit this item</button>
-            </form>
+                <li>Name: {requestedclothes.item_name}</li>
+                <li>Brand: {requestedclothes.item_brand}</li>
+                <li>Size: {requestedclothes.item_size}</li>
+                <li>Color: {requestedclothes.item_color}</li>
+                <li>Catergory: {requestedclothes.item_catergories}</li>
 
-            <form action={deleteItemURL}>
-                <button type={"submit"}>Delete this item</button>
-            </form>
+                <br/>
 
-        </body>
-    </Default>
+                <form action={editItemURL}>
+                    <button type={"submit"}>Edit this item</button>
+                </form>
+
+                <form action={deleteItemURL}>
+                    <button type={"submit"}>Delete this item</button>
+                </form>
+
+            </body>
+        </Default>
 
   )};
 }
 
 module.exports = item;
+
+                    // {clothesListing}
+

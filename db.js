@@ -23,7 +23,6 @@ const url = require('url');
 if( process.env.DATABASE_URL ){
 
   //we need to take apart the url so we can set the appropriate configs
-
   const params = url.parse(process.env.DATABASE_URL);
   const auth = params.auth.split(':');
 
@@ -36,10 +35,9 @@ if( process.env.DATABASE_URL ){
     database: params.pathname.split('/')[1],
     ssl: true
   };
-}
 
   //otherwise we are on the local network
-    else {
+   } else {
       configs = {
         user: 'postgres',
         host: '127.0.0.1',

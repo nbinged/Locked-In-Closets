@@ -108,7 +108,7 @@ module.exports = (db) => {
         };
     };
 
-    let showAddItemControllerCallback = (request, response) => {
+    let showItemControllerCallback = (request, response) => {
         let cookieName = request.cookies.username;
         let storedCookie = request.cookies.logged_in;
 
@@ -131,15 +131,12 @@ module.exports = (db) => {
 
             cloudinary.uploader.upload(request.file.path, function(result) {
 
-                // Cloudinary::Uploader.upload("cld_unicorn.jpg", :use_filename => "true", :background_removal => "cloudinary_ai")
+                let cookierequest = request.cookies;
 
-                console.log(result)
-
-                    db.clothing.addSingleClothing(request.body,result.url, (error, callback) => {
+                    db.clothing.addSingleClothing(request.body,result.url,cookierequest,(error, callback) => {
 
                     let data = {
-                                allclothes : callback,
-                                cookies : request.cookies
+                                allclothes : callback
                                     }
 
                     response.render('add', data);
@@ -147,26 +144,32 @@ module.exports = (db) => {
         })
     };
 
-    let viewItemControllerCallback = (request, response) => {
-
-        let storedCookie = request.cookies.logged_in;
-
-        if (storedCookie === undefined) {
-            response.send('please log in!')
-
-        } else {
-
-        }
-
-    };
-
-
     let logoutControllerCallback = (request, response) => {
         response.clearCookie('logged_in');
         response.clearCookie('username');
         response.clearCookie('userID');
         response.redirect('/login');
     };
+
+////////////////////
+//Dont touch above//
+////////////////////
+
+    let getViewedItemControllerCallback = (request, response) => {
+        let urlID = request.params.id;
+        // response.send(urlID);
+
+        // let cookierequest = request.cookies;
+
+        db.clothing.viewSingleItem(urlID,(error, callback) => {
+
+                    let data = {
+                                allclothes : callback
+                                    }
+
+                    response.render('item', data);
+                });
+    }
 
     /**
      * ===========================================
@@ -185,10 +188,10 @@ module.exports = (db) => {
 
         homepage: homepageControllerCallback,
 
-        showAddItem: showAddItemControllerCallback,
+        showAddItem: showItemControllerCallback,
         addItem: addItemControllerCallback,
 
-        viewIndividualItem: viewItemControllerCallback
+        getViewedItem: getViewedItemControllerCallback
     };
 
 }
