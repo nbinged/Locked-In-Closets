@@ -10,10 +10,7 @@
  * ===================================================
  */
 
-
-
 const pg = require('pg');
-const url = require('url');
 var configs;
 
 // inside of db.js
@@ -39,25 +36,24 @@ if( process.env.DATABASE_URL ){
     database: params.pathname.split('/')[1],
     ssl: true
   };
-
-}else{
-  configs = {
-    user: 'postgres',
-    host: '127.0.0.1',
-    database: 'catalog',
-    port: 5432,
-    password:'passfoot'
-  };
 }
 
+  //otherwise we are on the local network
+    else {
+      configs = {
+        user: 'postgres',
+        host: '127.0.0.1',
+        database: 'catalog',
+        port: 5432,
+        password:'passfoot'
+      };
+}
 
 const pool = new pg.Pool(configs);
 
 pool.on('error', function (err) {
   console.log('idle client error', err.message, err.stack);
 });
-
-
 
 /*
  * ===================================================
