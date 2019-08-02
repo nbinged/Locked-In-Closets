@@ -5,8 +5,8 @@ class add extends React.Component {
   render() {
 
     // console.log(this.props);
-    console.log('userid cookie',this.props.cookies.userID);
-    console.log('username cookie',this.props.cookies.username);
+    console.log('user cookie',this.props.cookies);
+    console.log('username cookie')
 
     return (
 
@@ -17,9 +17,9 @@ class add extends React.Component {
 
             <form enctype="multipart/form-data" action="/add" method="POST">
 
-                <input type="hidden" name="user_id" value={this.props.cookies.userID}/>
+                <input type="hidden" name="user_id" value={this.props.userID}/>
 
-                <input type="hidden" name="username" value={this.props.cookies.username}/>
+                <input type="hidden" name="username" value={this.props.username}/>
 
                 <p>Item Name:</p>
                 <input type="text" name="item_name" required/>

@@ -147,19 +147,6 @@ module.exports = (db) => {
         })
     };
 
-    let viewItemControllerCallback = (request, response) => {
-
-        let storedCookie = request.cookies.logged_in;
-
-        if (storedCookie === undefined) {
-            response.send('please log in!')
-
-        } else {
-
-        }
-
-    };
-
 
     let logoutControllerCallback = (request, response) => {
         response.clearCookie('logged_in');
@@ -186,9 +173,9 @@ module.exports = (db) => {
         homepage: homepageControllerCallback,
 
         showAddItem: showAddItemControllerCallback,
-        addItem: addItemControllerCallback,
+        addItem: addItemControllerCallback
 
-        viewIndividualItem: viewItemControllerCallback
+        // viewIndividualItem: viewItemControllerCallback
     };
 
 }
