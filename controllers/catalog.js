@@ -108,7 +108,7 @@ module.exports = (db) => {
         };
     };
 
-    let showItemControllerCallback = (request, response) => {
+    let showAddItemControllerCallback = (request, response) => {
         let cookieName = request.cookies.username;
         let storedCookie = request.cookies.logged_in;
 
@@ -137,16 +137,29 @@ module.exports = (db) => {
 
                     db.clothing.addSingleClothing(request.body,result.url, (error, callback) => {
 
-                    console.log('cloudinary result url', result.url)
-
                     let data = {
-                                allclothes : callback
+                                allclothes : callback,
+                                cookies : request.cookies
                                     }
 
                     response.render('add', data);
                 });
         })
     };
+
+    let viewItemControllerCallback = (request, response) => {
+
+        let storedCookie = request.cookies.logged_in;
+
+        if (storedCookie === undefined) {
+            response.send('please log in!')
+
+        } else {
+
+        }
+
+    };
+
 
     let logoutControllerCallback = (request, response) => {
         response.clearCookie('logged_in');
@@ -172,8 +185,10 @@ module.exports = (db) => {
 
         homepage: homepageControllerCallback,
 
-        showAddItem: showItemControllerCallback,
-        addItem: addItemControllerCallback
+        showAddItem: showAddItemControllerCallback,
+        addItem: addItemControllerCallback,
+
+        viewIndividualItem: viewItemControllerCallback
     };
 
 }

@@ -4,9 +4,9 @@ var Default = require('./layouts/default');
 class add extends React.Component {
   render() {
 
-    let loginURL = `/login`;
-    let registerURL = `/register`;
-    let addURL = `/add`;
+    // console.log(this.props);
+    console.log('userid cookie',this.props.cookies.userID);
+    console.log('username cookie',this.props.cookies.username);
 
     return (
 
@@ -14,7 +14,12 @@ class add extends React.Component {
             <h1>New Clothes Form</h1>
             <h3>Please enter the details of the item of clothing you would like to add to your archive.</h3>
 
+
             <form enctype="multipart/form-data" action="/add" method="POST">
+
+                <input type="hidden" name="user_id" value={this.props.cookies.userID}/>
+
+                <input type="hidden" name="username" value={this.props.cookies.username}/>
 
                 <p>Item Name:</p>
                 <input type="text" name="item_name" required/>
@@ -31,6 +36,9 @@ class add extends React.Component {
                 <p>Catergories:</p>
                 <input type="text" name="item_catergories" required/>
 
+                <br/>
+                <br/>
+
                 <p>Upload Your own picture</p>
                   <input type="file" name="image_file"/>
 
@@ -38,12 +46,6 @@ class add extends React.Component {
                 <br/>
 
                 <input type="submit" class="btn btn-primary"/>
-
-                <input type="hidden" name="user_id" value={this.props.cookie}/>
-                <input type="hidden" name="user_id" value={this.props.cookie}/>
-
-
-
 
             </form>
 
@@ -54,7 +56,3 @@ class add extends React.Component {
 }
 
 module.exports = add;
-
-
-
-                // Use the above code to add the add in username and id everytime the user add an item.

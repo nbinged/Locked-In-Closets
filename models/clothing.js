@@ -34,24 +34,6 @@ module.exports = (dbPoolInstance) => {
         });
     };
 
-    let viewSingleItem = (clothing_id, callback) => {
-        let query = 'SELECT * FROM clothing WHERE id = $1';
-        let values = [clothing.id];
-
-        dbPoolInstance.query(query, (error, queryResult) => {
-            if (error) {
-                callback(error, null);
-            } else {
-                if (queryResult.rows.length > 0) {
-                    callback(null, queryResult.rows[0]);
-                } else {
-                    callback(null, null);
-
-                }
-            }
-        });
-    }
-
 //Adds a clothing item to the database.
     let addSingleClothing = (form, cloud, callback) => {
 
@@ -62,8 +44,8 @@ module.exports = (dbPoolInstance) => {
         // let upload = image.replace('public/','')
         let cloudUrl = cloud
 
-        let query = 'INSERT INTO clothing (item_name, item_brand, item_size, item_color, item_catergories, image_file) VALUES ($1,$2,$3,$4,$5,$6) RETURNING *';
-        let values = [form.item_name, form.item_brand, form.item_size, form.item_color, form.item_catergories, cloudUrl];
+        let query = 'INSERT INTO clothing (user_id, username,item_name, item_brand, item_size, item_color, item_catergories, image_file) VALUES ($1,$2,$3,$4,$5,$6,$7,$8) RETURNING *';
+        let values = [form.user_id,form.username,form.item_name, form.item_brand, form.item_size, form.item_color, form.item_catergories, cloudUrl];
 
         dbPoolInstance.query(query, values, (error, queryResult) => {
             if (error) {
@@ -87,6 +69,26 @@ module.exports = (dbPoolInstance) => {
             }
         });
     }
+
+    // let viewSingleItem = (clothing_id, callback) => {
+
+    //     let clothing_id = clothing.id];
+    //     let query = 'SELECT * FROM clothing WHERE id = $1';
+    //     let values = [clothing.id];
+
+    //     dbPoolInstance.query(query, (error, queryResult) => {
+    //         if (error) {
+    //             callback(error, null);
+    //         } else {
+    //             if (queryResult.rows.length > 0) {
+    //                 callback(null, queryResult.rows[0]);
+    //             } else {
+    //                 callback(null, null);
+
+    //             }
+    //         }
+    //     });
+    // }
 
     let editSingleItem = (form, callback)=>{
         let query = 'INSERT INTO clothing (item_name,item_brand,item_size,item_color,item_catergories,image_file) VALUES ($1,$2,$3,$4,$5,$6) RETURNING *';
@@ -124,10 +126,9 @@ module.exports = (dbPoolInstance) => {
     return {
         getAllClothes,
         addSingleClothing,
-        viewSingleItem,
+        // viewSingleItem,
         editSingleItem,
         deleteSingleItem
 
     };
 };
-
