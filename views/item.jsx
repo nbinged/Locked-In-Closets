@@ -46,6 +46,5 @@ class item extends React.Component {
 }
 
 module.exports = item;
-
                     // {clothesListing}
 

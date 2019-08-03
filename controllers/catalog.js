@@ -167,10 +167,6 @@ module.exports = (db) => {
                 });
     }
 
-/////////////////////////////////////////////
-//Dont touch above!!!!!!!!!!!!!!!!!!!!!!!!//
-////////////////////////////////////////////
-
     let editViewedItemControllerCallback = (request, response) => {
         let urlID = request.params.id;
 
@@ -184,23 +180,56 @@ module.exports = (db) => {
                 });
     }
 
+/////////////////////////////////////////////
+//Dont touch above!!!!!!!!!!!!!!!!!!!!!!!!//
+////////////////////////////////////////////
 
-    // let editItemControllerCallback = (request, response) => {
-    //     let urlID = request.params.id;
+    let editItemControllerCallback = (request, response) => {
+        let urlID = request.params.id;
+        console.log(request.params.id)
+        console.log('bodiesssssssssssssssssss',request.body);
 
-    //     db.clothing.editSingleItem(request.body, urlID,(error, callback) => {
+        db.clothing.editSingleItem(request.body, urlID,(error, callback) => {
 
-    //                 let data = {
-    //                             allclothes : callback
-    //                                 }
+            console.log('controller:',request.body)
 
-    //                 response.render('edit', data);
-    //             });
-    // }
+                    let data = {
+                                allclothes : callback
+                                    }
 
+                    response.render('edit',data);
+                });
+    }
 
+    let deleteViewedItemControllerCallback = (request, response) => {
+        let urlID = request.params.id;
 
+        db.clothing.viewDeleteItem(urlID,(error, callback) => {
 
+            let data = {
+                                allclothes : callback
+                                    }
+
+                    response.render('delete', data);
+                });
+    }
+
+    let deleteItemControllerCallback = (request, response) => {
+        let urlID = request.params.id;
+        console.log(request.params.id)
+        console.log('bodiesssssssssssssssssss',request.body);
+
+        db.clothing.deleteSingleItem(request.body, urlID,(error, callback) => {
+
+            console.log('controller:',request.body)
+
+                    let data = {
+                                allclothes : callback
+                                    }
+
+                    response.send('delete');
+                });
+    }
 
     /**
      * ===========================================
@@ -226,8 +255,11 @@ module.exports = (db) => {
 
         //////////////DONT TOUCH ABOVE/////////////////
 
+        editItem: editItemControllerCallback,
         getEditItem: editViewedItemControllerCallback,
-        // editItem: editItemControllerCallback
+
+        getDeleteItem: deleteViewedItemControllerCallback,
+        deleteItem: deleteItemControllerCallback
     };
 
 }

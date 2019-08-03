@@ -5,7 +5,12 @@ class edit extends React.Component {
   render() {
 
     let props = this.props.allclothes;
-    console.log('propppppppppppppppppsssssssssss',props)
+    let urlItem = '/item/';
+    let urlEdit = '/edit?_';
+    let id = parseInt(props.id);
+    let put = 'method=PUT';
+
+    console.log('propssssssssssssssssssssss',this.props.allclothes)
 
     return (
 
@@ -13,29 +18,25 @@ class edit extends React.Component {
             <h1>Edit Clothes Form</h1>
             <h3>Please enter the details of the item of clothing you would like to edit.</h3>
 
-            <form enctype="multipart/form-data" action="/add" method="POST">
-
-                <input type="hidden" name="user_id" value={props.userID}/>
-
-                <input type="hidden" name="username" value={props.username}/>
+            <form enctype="multipart/form-data" action={urlItem + id + urlEdit + put } method="POST">
 
                 <p>Item Name:</p>
-                <input type="text" name="item_name" value={props.item_name}/>
+                <input type="text" name="item_name" defaultValue={props.item_name}/>
 
                 <p>Brand:</p>
-                <input type="text" name="item_brand" value={props.item_brand}/>
+                <input type="text" name="item_brand" defaultValue={props.item_brand}/>
 
                 <p>Size:</p>
-                <input type="text" name="item_size" value={props.item_size}/>
+                <input type="text" name="item_size" defaultValue={props.item_size}/>
 
                 <p>Color:</p>
-                <input type="text" name="item_color" value={props.item_color}/>
+                <input type="text" name="item_color" defaultValue={props.item_color}/>
 
                 <p>Catergories:</p>
-                <input type="text" name="item_catergories" value={props.item_catergories} />
+                <input type="text" name="item_catergories" defaultValue={props.item_catergories} />
 
-                <p>Upload Your own picture</p>
-                  <input type="text" name="image_file" value={props.image_file}/>
+                <p>Change the picture</p>
+                <input type="text" name="image_file" defaultValue={props.image_file} />
 
                 <br/>
                 <br/>

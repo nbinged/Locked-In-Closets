@@ -91,16 +91,10 @@ module.exports = (dbPoolInstance) => {
         });
     }
 
-/////////////////////////////
-/////DONT TOUCH ABOVE ITEMS//
-/////////////////////////////
-
     let viewEditSingleItem = (clothing_id, callback)=>{
 
         let query = 'SELECT * FROM clothing WHERE id = $1';
         let values = [clothing_id];
-
-        // console.log('idddddddddddddddddddddddddddddddd',request.params.id);
 
         dbPoolInstance.query(query,values, (error, queryResult) => {
             if (error) {
@@ -116,45 +110,83 @@ module.exports = (dbPoolInstance) => {
         });
     }
 
+    let viewDeleteItem = (clothing_id, callback)=>{
+
+        let query = 'SELECT * FROM clothing WHERE id = $1';
+        let values = [clothing_id];
+
+        dbPoolInstance.query(query,values, (error, queryResult) => {
+            if (error) {
+                callback(error, null);
+            } else {
+                if (queryResult.rows.length > 0) {
+                    callback(null, queryResult.rows[0]);
+                } else {
+                    callback(null, null);
+
+                }
+            }
+        });
+    }
+
+/////////////////////////////
+/////DONT TOUCH ABOVE ITEMS//
+/////////////////////////////
+
+    let editSingleItem = (form, itemID, callback)=> {
+
+        console.log('models form:',form)
+        console.log('itemID',itemID)
+
+        let query = 'UPDATE clothing SET item_name = ($1) item_brand = ($2) item_size = ($3) item_color = ($4) item_catergories = ($5) image_file = ($6) WHERE id = ($7) RETURNING *';
+
+        let values = [form.item_name, form.item_brand, form.item_size, form.item_color, form.item_catergories, form.image_file, itemID];
+
+        dbPoolInstance.query(query,values, (error, queryResult) => {
+
+            if (error) {
+                callback(error, null);
+                console.log('error null')
+
+            } else {
+                if (queryResult.rows.length > 0) {
+                    callback(null, queryResult.rows);
+                    console.log('IT WORKS FINALLY')
+
+                } else {
+                    callback(null, null);
+
+                }
+            }
+        });
+    };
+
+    let deleteSingleItem = (clothing_id, callback)=>{
+        let query = "DELETE * FROM clothing WHERE id = $1";
+        let values = [clothing_id];
+
+        dbPoolInstance.query(query,values,(error, queryResult) => {
+
+            if (error) {
+                callback(error, null);
+                console.log("Error")
+            } else {
+
+                callback(null, true);
+            }
+        });
+    }
+
     return {
+
         getAllClothes,
         addSingleClothing,
         viewSingleItem,
         viewEditSingleItem,
+        viewDeleteItem,
 
         ////DONT EDIT ANYTHING ABOVE///////
         editSingleItem,
-        // deleteSingleItem
+        deleteSingleItem
     };
 };
-
-
-    // let editSingleItem = (form, itemID, callback)=>{
-
-    //     let query = 'UPDATE clothing SET VALUES (item_name, item_brand, item_size, item_color, item_catergories, image_file) WHERE id = $7 RETURNING *';
-
-    //     let values = [form.item_name, form.item_brand, form.item_size, form.item_color, form.item_catergories, form.image_file, itemID];
-
-    //     dbPoolInstance.clothing.editSingleItem(request.body, urlID,(error, callback) => {
-
-    //                 let data = {
-    //                             allclothes : callback
-    //                                 }
-
-    //                 response.render('item', data);
-    //             });
-    // }
-
-    // let deleteSingleItem = (clothing_id,callback)=>{
-    //     let query = "DELETE * FROM clothing WHERE id = $1";
-    //     let values = [clothing_id];
-    //     dbPoolInstance.query(query,values,(error, queryResult) => {
-    //         if (error) {
-    //             callback(error, null);
-    //             console.log("Error")
-    //         } else {
-
-    //                 callback(null, true);
-    //         }
-    //     });
-    // }
