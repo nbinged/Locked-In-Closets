@@ -8,6 +8,7 @@ class login extends React.Component {
     let addItemURL = `/add`;
     let editItemURL = `/edit`;
     let deleteItemURL = `/delete`;
+    let itemUrl = `/item/`
     let clothesListing;
 
     let clothes = this.props.allclothes;
@@ -21,11 +22,11 @@ class login extends React.Component {
 
                 {oneItem.item_name}
 
-                <form action={editItemURL} method="GET">
+                <form action={itemUrl+oneItem.id+editItemURL} method="GET">
                 <input type="submit" value="Edit Item"/>
                 </form>
 
-                <form action={deleteItemURL} method="GET">
+                <form action={itemUrl+oneItem.id+deleteItemURL} method="GET">
                 <input type="submit" value="Delete Item"/>
                 </form>
             </ul>

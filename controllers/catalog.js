@@ -151,10 +151,6 @@ module.exports = (db) => {
         response.redirect('/login');
     };
 
-////////////////////
-//Dont touch above//
-////////////////////
-
     let getViewedItemControllerCallback = (request, response) => {
         let urlID = request.params.id;
         // response.send(urlID);
@@ -170,6 +166,41 @@ module.exports = (db) => {
                     response.render('item', data);
                 });
     }
+
+/////////////////////////////////////////////
+//Dont touch above!!!!!!!!!!!!!!!!!!!!!!!!//
+////////////////////////////////////////////
+
+    let editViewedItemControllerCallback = (request, response) => {
+        let urlID = request.params.id;
+
+        db.clothing.viewEditSingleItem(urlID,(error, callback) => {
+
+                    let data = {
+                                allclothes : callback
+                                    }
+
+                    response.render('edit', data);
+                });
+    }
+
+
+    // let editItemControllerCallback = (request, response) => {
+    //     let urlID = request.params.id;
+
+    //     db.clothing.editSingleItem(request.body, urlID,(error, callback) => {
+
+    //                 let data = {
+    //                             allclothes : callback
+    //                                 }
+
+    //                 response.render('edit', data);
+    //             });
+    // }
+
+
+
+
 
     /**
      * ===========================================
@@ -191,7 +222,12 @@ module.exports = (db) => {
         showAddItem: showItemControllerCallback,
         addItem: addItemControllerCallback,
 
-        getViewedItem: getViewedItemControllerCallback
+        getViewedItem: getViewedItemControllerCallback,
+
+        //////////////DONT TOUCH ABOVE/////////////////
+
+        getEditItem: editViewedItemControllerCallback,
+        // editItem: editItemControllerCallback
     };
 
 }

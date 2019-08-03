@@ -31,11 +31,11 @@ class item extends React.Component {
 
                 <br/>
 
-                <form action={editItemURL}>
+                <form action={requestedclothes.id+editItemURL}>
                     <button type={"submit"}>Edit this item</button>
                 </form>
 
-                <form action={deleteItemURL}>
+                <form action={requestedclothes.id+deleteItemURL}>
                     <button type={"submit"}>Delete this item</button>
                 </form>
 
