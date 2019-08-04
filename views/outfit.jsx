@@ -1,13 +1,11 @@
 const React = require('react');
-var PreLogin = require('./layouts/default');
-
+var Default = require('./layouts/default');
 import { Container, Row, Col } from 'reactstrap';
 
-class home extends React.Component {
+class outfit extends React.Component {
   render() {
 
     let addItemURL = `/add`;
-    let addOutfitURL = `outift/add`;
     let editItemURL = `/edit`;
     let deleteItemURL = `/delete`;
     let itemUrl = `/item/`
@@ -43,7 +41,7 @@ class home extends React.Component {
     <Default>
          <body>
 
-            <h1>Welcome to your wardrobe</h1>
+            <h1>Here are your outfits</h1>
 
         <Row>
                 {clothesListing}
@@ -55,10 +53,6 @@ class home extends React.Component {
                 <button type={"submit"}>Add new clothes</button>
             </form>
 
-            <form action={addOutfitURL}>
-                <button type={"submit"}>Create a new Outfit</button>
-            </form>
-
 
         </body>
     </Default>
@@ -66,6 +60,6 @@ class home extends React.Component {
   )};
 }
 
-module.exports = home;
+module.exports = outfit;
 
 

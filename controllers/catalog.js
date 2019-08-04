@@ -253,13 +253,16 @@ module.exports = (db) => {
 
         getViewedItem: getViewedItemControllerCallback,
 
-        //////////////DONT TOUCH ABOVE/////////////////
-
-        editItem: editItemControllerCallback,
         getEditItem: editViewedItemControllerCallback,
 
         getDeleteItem: deleteViewedItemControllerCallback,
+
+        //////////////DONT TOUCH ABOVE/////////////////
+
+        editItem: editItemControllerCallback,
         deleteItem: deleteItemControllerCallback
+
+        /////////////THOSE ABOVE DONT WORK YET/////////
     };
 
 }

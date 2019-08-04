@@ -1,0 +1,36 @@
+.navbar-nav.navbar-center.navbar-brand {
+    position: absolute;
+    left: 50%;
+    transform: translatex(-50%);
+    color: white;
+}
+
+.nav-link {
+    color: white;
+}
+
+/*html {
+    height: 100%;
+    background-color: grey;
+}
+
+body {
+    height: 100%;
+    background-image: url("./logbg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-size: 50% auto;
+}*/
+
+html {
+
+}
+
+body {
+    background-image: url('./logbg.jpg');
+    background-repeat: no-repeat;
+    background-size: 50%;
+    text-align: center;
+    background-position: left;
+
+}
