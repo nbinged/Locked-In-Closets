@@ -54,14 +54,10 @@ class item extends React.Component {
 
         <Form action="" className="">
 
-                <Button className="item-buttons" formaction={requestedclothes.id+editItemURL} type={"submit"} color="success" size="lg">Edit this item</Button>
+                <Button className="item-buttons" formaction={requestedclothes.id+editItemURL} type={"submit"} color="warning" size="lg">Edit this item</Button>
 
-                <Button className="item-buttons" formaction={requestedclothes.id+deleteItemURL} type={"submit"} color="success" size="lg">Delete this item</Button>
+                <Button className="item-buttons" formaction={requestedclothes.id+deleteItemURL} type={"submit"} color="danger" size="lg">Delete this item</Button>
         </Form>
-
-
-
-
 
                     </Col>
                 </Row>

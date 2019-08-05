@@ -30,7 +30,7 @@ export default class register extends React.Component {
             <br/>
             <br/>
 
-    <Form method="POST" action={loginURL}>
+    <Form method="POST" action={registerURL}>
 
         <FormGroup>
           <Label for="Username"><strong>Username:</strong></Label>

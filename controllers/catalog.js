@@ -95,7 +95,8 @@ module.exports = (db) => {
 
                     if ( storedCookie === sessionCookieCheck ) {
                             let data = {
-                                allclothes : callbackdata
+                                allclothes : callbackdata,
+                                cookieUser : cookieName
                             }
                             response.render('home', data);
 

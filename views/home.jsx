@@ -13,7 +13,11 @@ class home extends React.Component {
     let clothesListing;
 
     let clothes = this.props.allclothes;
-    let username = this.props.allclothes[0].username;
+    let username = this.props.cookieUser;
+    // console.log(this.props)
+    // let username = this.props[0].username;
+
+
 
     if (clothes !== null ) {
         clothesListing = clothes.map(oneItem =>
