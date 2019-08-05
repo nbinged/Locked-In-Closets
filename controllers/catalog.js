@@ -139,7 +139,7 @@ module.exports = (db) => {
                                 allclothes : callback
                                     }
 
-                    response.render('add', data);
+                    response.redirect('home', data);
                 });
         })
     };

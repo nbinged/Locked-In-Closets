@@ -1,6 +1,6 @@
 const React = require('react');
 var Default = require('./layouts/default');
-import { Container, Row, Col } from 'reactstrap';
+import { Container, Row, Col, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 
 class home extends React.Component {
   render() {
@@ -13,9 +13,11 @@ class home extends React.Component {
     let clothesListing;
 
     let clothes = this.props.allclothes;
+    let username = this.props.allclothes[0].username;
 
     if (clothes !== null ) {
         clothesListing = clothes.map(oneItem =>
+
             (<Col><div>
                 <ul>
 
@@ -23,13 +25,13 @@ class home extends React.Component {
 
                 {oneItem.item_name}
 
-                <form action={itemUrl+oneItem.id+editItemURL} method="GET">
+                <Form action={itemUrl+oneItem.id+editItemURL} method="GET">
                 <input type="submit" value="Edit Item"/>
-                </form>
+                </Form>
 
-                <form action={itemUrl+oneItem.id+deleteItemURL} method="GET">
+                <Form action={itemUrl+oneItem.id+deleteItemURL} method="GET">
                 <input type="submit" value="Delete Item"/>
-                </form>
+                </Form>
             </ul>
             </div></Col>));
 
@@ -42,22 +44,27 @@ class home extends React.Component {
     <Default>
          <body>
 
-            <h1>Welcome to your wardrobe</h1>
+         <Row>
+            <Col className="home-bg">
+            </Col>
+         </Row>
+
+         <Row className="welcome-text">
+            <h2><strong>Welcome to your wardrobe, {username}.</strong></h2>
+        </Row>
+
+        <Form action="" className="welcome-buttons">
+
+                <Button className="clothes" formaction={addItemURL} type={"submit"} color="success" size="lg">Add new Clothes</Button>
+
+                <Button className="outfit" formaction={addOutfitURL} type={"submit"} color="success" size="lg">Create a new Outfit</Button>
+        </Form>
 
         <Row>
                 {clothesListing}
         </Row>
 
             <br/>
-
-            <form action={addItemURL}>
-                <button type={"submit"}>Add new clothes</button>
-            </form>
-
-            <form action={addOutfitURL}>
-                <button type={"submit"}>Create a new Outfit</button>
-            </form>
-
 
         </body>
     </Default>

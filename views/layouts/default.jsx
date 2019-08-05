@@ -12,10 +12,13 @@ class Default extends React.Component {
             <html>
 
             <head>
-                <title>Locked In Closets</title>
+                <title>LIC</title>
+
+                <link rel="icon" href="/favicon.png" type="image/png" sizes="16x16"/>
                 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
                       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
                       crossOrigin="anonymous"/>
+                <link href="https://fonts.googleapis.com/css?family=Libre+Caslon+Text&display=swap" rel="stylesheet"/>
                 <link rel="stylesheet" type="text/css" href="/style.css"/>
             </head>
 
@@ -52,6 +55,11 @@ class Default extends React.Component {
                         </nav>
 
                     {this.props.children}
+
+<footer id="sticky-footer" class="py-3">
+    <div class="container text-center">
+    <small>&copy; Locked In Closets</small></div>
+  </footer>
 
                 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossOrigin="anonymous"></script>
 
