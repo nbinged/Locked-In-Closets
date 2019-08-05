@@ -136,11 +136,11 @@ module.exports = (db) => {
 
                     db.clothing.addSingleClothing(request.body,result.url,cookierequest,(error, callback) => {
 
-                    let data = {
-                                allclothes : callback
-                                    }
+                    // let data = {
+                    //             allclothes : callback
+                    //                 }
 
-                    response.redirect('home', data);
+                    response.redirect('home');
                 });
         })
     };

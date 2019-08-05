@@ -143,3 +143,10 @@ align-content: center;
     justify-content: left;
     color: white;
 }
+
+.cardHolder {
+ display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 1rem;
+  margin-top: 3rem;
+}

@@ -23,7 +23,7 @@ class item extends React.Component {
 
                     <img className="item-image" src ={requestedclothes.image_file}/>
 
-                    <div className="request-text"><h2>You have requested: {requestedclothes.item_name}</h2>
+                    <div className="request-text"><h2>You have requested: <strong>{requestedclothes.item_name}</strong></h2>
                     </div>
 
                     <br/>
@@ -58,6 +58,10 @@ class item extends React.Component {
 
                 <Button className="item-buttons" formaction={requestedclothes.id+deleteItemURL} type={"submit"} color="danger" size="lg">Delete this item</Button>
         </Form>
+
+
+
+
 
                     </Col>
                 </Row>

@@ -65,7 +65,7 @@ class home extends React.Component {
                 <Button className="outfit" formaction={addOutfitURL} type={"submit"} color="success" size="lg">Create a new Outfit</Button>
         </Form>
 
-        <Row>
+        <Row className="cardHolder">
                 {clothesListing}
         </Row>
 

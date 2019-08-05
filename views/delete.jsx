@@ -1,5 +1,6 @@
 const React = require('react');
 var Default = require('./layouts/default');
+import { Container, Row, Col, Button, Form, FormGroup, Label, Input, FormText, Card, CardBody, CardTitle, CardText, CardImg, ListGroup, ListGroupItem } from 'reactstrap';
 
 class Delete extends React.Component {
   render() {
@@ -7,41 +8,62 @@ class Delete extends React.Component {
     let props = this.props.allclothes;
     let urlItem = '/item/';
     let urlDelete = '/delete?_';
+    let urlEdit = '/edit?_';
     let id = parseInt(props.id);
     let put = 'method=DELETE'
+
+    // console.log('HELLO FROM EDIT JSXXXXXXXXXXXXXXXXXXXX',this.props.allclothes)
 
     return (
 
     <Default>
-            <h1>Delete Clothes Form</h1>
-            <h3>Are you sure you would like to delete this item?</h3>
+        <body>
 
-            <form action={urlItem + id + urlDelete + put } method="POST">
+            <Row>
+                <Col sm="12" md={{ size: 6, offset: 4 }}>
 
-                <img src ={props.image_file}/>
+                <img className="item-image" src ={props.image_file}/>
 
-                <p>Item Name:</p>
-                <p>{props.item_name}</p>
+                <div className="request-text"><h2>Are you sure you would like to delete <strong>{props.item_name}</strong>?</h2>
+                </div>
 
-                <p>Brand:</p>
-                <p>{props.item_brand}</p>
+             <br/>
 
-                <p>Size:</p>
-                <p>{props.item_size}</p>
 
-                <p>Color:</p>
-                <p>{props.item_color}</p>
+             <ListGroup>
+                    <ListGroupItem>
+                        <strong>Item Name:</strong> {props.item_name}
+                    </ListGroupItem>
 
-                <p>Catergories:</p>
-                <p>{props.item_catergories}</p>
+                    <ListGroupItem>
+                        <strong>Brand:</strong> {props.item_brand}
+                    </ListGroupItem>
 
-                <br/>
-                <br/>
+                    <ListGroupItem>
+                        <strong>Size:</strong> {props.item_size}
+                    </ListGroupItem>
 
-                <input type="submit" class="btn btn-primary"/>
+                    <ListGroupItem>
+                        <strong>Color:</strong> {props.item_color}
+                    </ListGroupItem>
 
-            </form>
+                    <ListGroupItem>
+                        <strong>Catergory:</strong> {props.item_catergories}
+                    </ListGroupItem>
+              </ListGroup>
 
+                    <br/>
+
+                <Form action={urlItem + id + urlDelete + put} method="POST">
+
+                <Button className="item-buttons" type={"submit"} color="danger" size="lg">Delete this item</Button>
+
+                </Form>
+
+                        </Col>
+                    </Row>
+
+            </body>
     </Default>
 
     );

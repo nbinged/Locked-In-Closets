@@ -11,8 +11,6 @@ class edit extends React.Component {
     let id = parseInt(props.id);
     let put = '_method=PUT';
 
-    console.log('HELLO FROM EDIT JSXXXXXXXXXXXXXXXXXXXX',this.props.allclothes)
-
     return (
 
     <Default>
