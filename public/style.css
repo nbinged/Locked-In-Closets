@@ -32,7 +32,18 @@ h1 {
     background-image: url('./home-bg.jpg');
     background-size: cover;
     height: calc(35vh);
-/*    background-position: top;*/
+}
+
+.item-bg {
+    background-image: url('./item-bg.jpg');
+    background-size: cover;
+    height: calc(35vh);
+}
+
+.item-image{
+    max-width: 500px;
+    max-height: 500px;
+    margin: 20px;
 }
 
 .welcome-text {
@@ -80,7 +91,6 @@ h1 {
 }
 
 .cloth-image-card {
-
       max-width: 100%;
       height: auto;
 }
@@ -101,5 +111,34 @@ h1 {
     max-height: 434px;
 /*    max-width: 434px;*/
     object-fit: contain;
+}
 
+.card-title {
+    color: black;
+    font-family: 'Libre Caslon Text', serif;
+    text-align: center;
+}
+
+.card-text {
+    color: black;
+    font-family: 'Libre Caslon Text', serif;
+    text-align: center;
+}
+
+.request-text {
+    text-align: left;
+    justify-content: center;
+    padding: 15px;
+    font-family: 'Libre Caslon Text', serif;
+}
+
+.col-sm-12 col-md-6 offset-md-4 {
+align-content: center;
+}
+
+.item-buttons {
+    display: inline-block;
+    margin: 10px;
+    padding:10px;
+    justify-content: left;
 }

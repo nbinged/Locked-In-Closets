@@ -26,7 +26,7 @@ class home extends React.Component {
         <CardImg top width="100%" src={oneItem.image_file} alt="Card image cap"/>
 
         <CardBody>
-          <CardTitle>{oneItem.item_brand}</CardTitle>
+          <CardTitle><strong>{oneItem.item_brand}</strong></CardTitle>
           <CardText>{oneItem.item_name}</CardText>
         </CardBody>
 
@@ -34,7 +34,7 @@ class home extends React.Component {
     </div>
 </a>
 
-</Col>));
+        </Col>));
 
     } else {
         clothesListing = '';

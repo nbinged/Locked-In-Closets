@@ -1,5 +1,6 @@
 const React = require('react');
 var Default = require('./layouts/default');
+import { Container, Row, Col, Button, Form, FormGroup, Label, Input, FormText, Card, CardBody, CardTitle, CardText, CardImg, ListGroup, ListGroupItem } from 'reactstrap';
 
 
 class item extends React.Component {
@@ -10,37 +11,61 @@ class item extends React.Component {
     let deleteItemURL = `/delete`;
 
     let requestedclothes = this.props.allclothes;
-    console.log(requestedclothes);
+    // console.log(requestedclothes);
 
     return (
 
         <Default>
              <body>
-                <div className="cloth-image-card">
 
-                <h1>Here is your item</h1>
+                 <Row>
+                    <Col sm="12" md={{ size: 6, offset: 4 }}>
 
-                <img src ={requestedclothes.image_file}/>
+                    <img className="item-image" src ={requestedclothes.image_file}/>
 
-                <br/>
+                    <div className="request-text"><h2>You have requested: {requestedclothes.item_name}</h2>
+                    </div>
 
-                    <li>Name: {requestedclothes.item_name}</li>
-                    <li>Brand: {requestedclothes.item_brand}</li>
-                    <li>Size: {requestedclothes.item_size}</li>
-                    <li>Color: {requestedclothes.item_color}</li>
-                    <li>Catergory: {requestedclothes.item_catergories}</li>
+                    <br/>
 
-                <br/>
+                      <ListGroup>
+                            <ListGroupItem>
+                                <strong>Name:</strong> {requestedclothes.item_name}
+                            </ListGroupItem>
 
-                <form action={requestedclothes.id+editItemURL}>
-                    <button type={"submit"}>Edit this item</button>
-                </form>
+                            <ListGroupItem>
+                                <strong>Brand:</strong> {requestedclothes.item_brand}
+                            </ListGroupItem>
 
-                <form action={requestedclothes.id+deleteItemURL}>
-                    <button type={"submit"}>Delete this item</button>
-                </form>
+                            <ListGroupItem>
+                                <strong>Size:</strong> {requestedclothes.item_size}
+                            </ListGroupItem>
 
-                </div>
+                            <ListGroupItem>
+                                <strong>Color:</strong> {requestedclothes.item_color}
+                            </ListGroupItem>
+
+                            <ListGroupItem>
+                                <strong>Catergory:</strong> {requestedclothes.item_catergories}
+                            </ListGroupItem>
+                      </ListGroup>
+
+                    <br/>
+
+        <Form action="" className="">
+
+                <Button className="item-buttons" formaction={requestedclothes.id+editItemURL} type={"submit"} color="success" size="lg">Edit this item</Button>
+
+                <Button className="item-buttons" formaction={requestedclothes.id+deleteItemURL} type={"submit"} color="success" size="lg">Delete this item</Button>
+        </Form>
+
+
+
+
+
+                    </Col>
+                </Row>
+
             </body>
         </Default>
 
@@ -48,5 +73,4 @@ class item extends React.Component {
 }
 
 module.exports = item;
-                    // {clothesListing}
 
