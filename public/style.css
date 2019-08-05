@@ -150,3 +150,9 @@ align-content: center;
   grid-gap: 1rem;
   margin-top: 3rem;
 }
+
+.add-bg {
+    background-image: url('./add-bg.jpg');
+    background-size: cover;
+    height: calc(35vh);
+}
