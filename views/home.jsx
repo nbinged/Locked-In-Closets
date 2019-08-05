@@ -55,79 +55,22 @@ class home extends React.Component {
          </Row>
 
          <Row className="welcome-text">
-            <h2><strong>Welcome to your wardrobe, {username}.</strong></h2>
+            <h2><strong>Welcome to your wardrobe, <font color="#11607E">{username}</font>.</strong></h2>
         </Row>
 
         <Form action="" className="welcome-buttons">
 
                 <Button className="clothes" formaction={addItemURL} type={"submit"} color="success" size="lg">Add new Clothes</Button>
 
-                <Button className="outfit" formaction={addOutfitURL} type={"submit"} color="success" size="lg">Create a new Outfit</Button>
         </Form>
 
         <Row className="cardHolder">
                 {clothesListing}
         </Row>
 
+        <br/>
+
         </body>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     </Default>
 
@@ -136,4 +79,4 @@ class home extends React.Component {
 
 module.exports = home;
 
-
+// <Button className="outfit" formaction={addOutfitURL} type={"submit"} color="success" size="lg">Create a new Outfit</Button>

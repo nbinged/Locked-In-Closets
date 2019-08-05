@@ -24,7 +24,7 @@ class add extends React.Component {
 
                 <div className="request-text">
                     <h1><strong>New Clothes Form</strong></h1>
-                    <h4>Please enter the details of the item <br></br> you would like to add to your collection</h4>
+                    <h4>Please enter the details of the item <br></br> you would like into add to your collection.</h4>
                 </div>
 
         <Form enctype="multipart/form-data" action="/add" method="POST">
@@ -67,9 +67,11 @@ class add extends React.Component {
 
                 <br/>
 
-            <Button color="primary" input type="submit" size="lg" block>Submit</Button>
+            <Button color="success" input type="submit" size="lg" block>Submit</Button>
 
             </Form>
+
+                <br/>
 
                     </Col>
                 </Row>
