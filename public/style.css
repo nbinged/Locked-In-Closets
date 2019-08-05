@@ -95,3 +95,11 @@ h1 {
 .container text-center {
     text-align: left;]
 }
+
+
+.card-img-top {
+    max-height: 434px;
+/*    max-width: 434px;*/
+    object-fit: contain;
+
+}

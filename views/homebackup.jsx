@@ -18,23 +18,22 @@ class home extends React.Component {
     if (clothes !== null ) {
         clothesListing = clothes.map(oneItem =>
 
-            (<Col>
+            (<Col><div>
+                <ul>
 
-<a href={'/item/'+oneItem.id}>
-    <div className="clothing-card">
-      <Card style={{ cursor: "pointer" }}>
-        <CardImg top width="100%" src={oneItem.image_file} alt="Card image cap"/>
+                <a href={'/item/'+oneItem.id}><img src ={oneItem.image_file}/></a>
 
-        <CardBody>
-          <CardTitle>{oneItem.item_brand}</CardTitle>
-          <CardText>{oneItem.item_name}</CardText>
-        </CardBody>
+                {oneItem.item_name}
 
-      </Card>
-    </div>
-</a>
+                <Form action={itemUrl+oneItem.id+editItemURL} method="GET">
+                <input type="submit" value="Edit Item"/>
+                </Form>
 
-</Col>));
+                <Form action={itemUrl+oneItem.id+deleteItemURL} method="GET">
+                <input type="submit" value="Delete Item"/>
+                </Form>
+            </ul>
+            </div></Col>));
 
     } else {
         clothesListing = '';
@@ -66,64 +65,6 @@ class home extends React.Component {
         </Row>
 
         </body>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     </Default>
 
