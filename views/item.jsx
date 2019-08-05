@@ -16,6 +16,7 @@ class item extends React.Component {
 
         <Default>
              <body>
+                <div className="cloth-image-card">
 
                 <h1>Here is your item</h1>
 
@@ -23,11 +24,11 @@ class item extends React.Component {
 
                 <br/>
 
-                <li>Name: {requestedclothes.item_name}</li>
-                <li>Brand: {requestedclothes.item_brand}</li>
-                <li>Size: {requestedclothes.item_size}</li>
-                <li>Color: {requestedclothes.item_color}</li>
-                <li>Catergory: {requestedclothes.item_catergories}</li>
+                    <li>Name: {requestedclothes.item_name}</li>
+                    <li>Brand: {requestedclothes.item_brand}</li>
+                    <li>Size: {requestedclothes.item_size}</li>
+                    <li>Color: {requestedclothes.item_color}</li>
+                    <li>Catergory: {requestedclothes.item_catergories}</li>
 
                 <br/>
 
@@ -39,6 +40,7 @@ class item extends React.Component {
                     <button type={"submit"}>Delete this item</button>
                 </form>
 
+                </div>
             </body>
         </Default>
 

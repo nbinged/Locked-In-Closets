@@ -16,7 +16,7 @@ class Delete extends React.Component {
             <h1>Delete Clothes Form</h1>
             <h3>Are you sure you would like to delete this item?</h3>
 
-            <form enctype="multipart/form-data" action={urlItem + id + urlDelete + put } method="POST">
+            <form action={urlItem + id + urlDelete + put } method="POST">
 
                 <img src ={props.image_file}/>
 

@@ -1,7 +1,8 @@
 const React = require('react');
-var Default = require('./layouts/default');
+var LoginPage = require('./layouts/login');
+import { Container, Row, Col, Button, Form, FormGroup, Label, Input, FormText} from 'reactstrap';
 
-class login extends React.Component {
+export default class login extends React.Component {
   render() {
 
     let loginURL = `/login`;
@@ -10,27 +11,58 @@ class login extends React.Component {
 
     return (
 
-    <Default>
-            <h1>Welcome back to Catalog</h1>
-            <h3>Please log in to access your digital clothing archive.</h3>
+<LoginPage>
 
-            <form method="POST" action={loginURL}>
-                <p>Name:</p>
-                <input type={"text"} name={"username"} required/>
-                <p>Password:</p>
-                <input type={"password"} name={"password"} required/>
-                <br/>
-                <br/>
-                <input type="submit" value="Log In"/>
-            </form>
+        <Container fluid>
+        <Row>
+
+
+        <Col xs="8" className="background-image">
+            </Col>
+
+        <Col xs="4" className="empty-background">
+
+        <h2>Welcome back to</h2>
+        <h2><strong>Locked In Closets</strong></h2>
+
+        <p>Please log in to access your digital clothing archive.</p>
+
+        <br/>
+        <br/>
+
+        <h3>Log In</h3>
+
+    <Form method="POST" action={loginURL}>
+
+        <FormGroup>
+          <Label for="Username">Username:</Label>
+          <Input type="text" name="username" required/>
+        </FormGroup>
+
+        <FormGroup>
+          <Label for="Password">Password:</Label>
+          <Input type="password" name="password" required/>
+        </FormGroup>
+
+        <Button type={"submit"} color="success" size="lg" block>Log In</Button>
+      </Form>
+
+            <br/>
             <br/>
 
+        <h6>Dont have an account? Create one instead!</h6>
 
-            <p>Dont have an account? Create one instead!</p>
-            <form action={registerURL}>
-                <button type={"submit"}>Register</button>
-            </form>
-    </Default>
+            <Form action={registerURL}>
+            <Button type={"submit"} size="lg">Register</Button>
+            </Form>
+
+      </Col>
+
+    </Row>
+
+    </Container>
+
+</LoginPage>
 
     );
   }

@@ -6,7 +6,7 @@ import { Container, Row, Col } from 'reactstrap';
         color: 'white'
   };
 
-class Default extends React.Component {
+class LoginPage extends React.Component {
     render() {
         return (
             <html>
@@ -20,7 +20,7 @@ class Default extends React.Component {
             </head>
 
                         <nav className="navbar navbar-expand-lg" style={styles1}>
-                          <a className="navbar-nav navbar-center navbar-brand" a href="/home">Locked In Closets</a>
+                          <a className="navbar-nav navbar-center navbar-brand">Locked In Closets</a>
 
                           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 
@@ -31,19 +31,11 @@ class Default extends React.Component {
                             <ul className="navbar-nav ml-auto">
 
                                 <li className="nav-item">
-                                    <a className="nav-link" href="/home">Wardrobe</a>
+                                    <a className="nav-link" href="/register">Register</a>
                                 </li>
 
                                 <li className="nav-item">
-                                    <a className="nav-link" href="/outfits">Outfits</a>
-                                </li>
-
-                                <li className="nav-item">
-                                    <a className="nav-link" href="/lookbook">Lookbook</a>
-                                </li>
-
-                                <li className="nav-item">
-                                    <a className="nav-link" href="/logout">Logout</a>
+                                    <a className="nav-link" href="/login">Login</a>
                                 </li>
 
                             </ul>
@@ -60,4 +52,4 @@ class Default extends React.Component {
     }
 }
 
-module.exports = Default;
+module.exports = LoginPage;

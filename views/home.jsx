@@ -1,6 +1,5 @@
 const React = require('react');
-var PreLogin = require('./layouts/default');
-
+var Default = require('./layouts/default');
 import { Container, Row, Col } from 'reactstrap';
 
 class home extends React.Component {

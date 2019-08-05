@@ -1,7 +1,8 @@
 const React = require('react');
-var Default = require('./layouts/default');
+var RegisterPage = require('./layouts/register');
+import { Container, Row, Col, Button, Form, FormGroup, Label, Input, FormText} from 'reactstrap';
 
-class register extends React.Component {
+export default class register extends React.Component {
   render() {
 
     let registerURL = `/register`;
@@ -10,25 +11,58 @@ class register extends React.Component {
 
     return (
 
-    <Default>
-            <h1>Welcome to Catalog</h1>
-            <h3>Create your account to make your own digital clothing archive</h3>
+<RegisterPage>
 
-            <form method="POST" action={registerURL}>
-                <p>Name:</p>
-                <input type={"text"} name={"username"} required/>
-                <p>Password:</p>
-                <input type={"password"} name={"password"} required/>
-                <br/>
-                <br/>
-                <input type="submit" value="Sign up"/>
-            </form>
+        <Container fluid>
+        <Row>
+
+
+        <Col xs="8" className="background-image">
+            </Col>
+
+        <Col xs="4" className="empty-background">
+
+            <h2>Welcome to</h2>
+            <h2><strong>Locked In Closets</strong></h2>
+
+            <p>Make an account to create your own digital clothing archive</p>
+
             <br/>
-            <p>Already have an account? Login instead</p>
-            <form action={loginURL}>
-                <button type={"submit"}>Login</button>
-            </form>
-    </Default>
+            <br/>
+
+            <h3>Sign In</h3>
+
+    <Form method="POST" action={loginURL}>
+
+        <FormGroup>
+          <Label for="Username">Username:</Label>
+          <Input type="text" name="username" required/>
+        </FormGroup>
+
+        <FormGroup>
+          <Label for="Password">Password:</Label>
+          <Input type="password" name="password" required/>
+        </FormGroup>
+
+        <Button type={"submit"} color="warning" size="lg" block>Sign up</Button>
+      </Form>
+
+            <br/>
+            <br/>
+
+        <h6>Already have an account? Login instead!</h6>
+
+            <Form action={loginURL}>
+            <Button type={"submit"} size="lg" >Login</Button>
+            </Form>
+
+      </Col>
+
+    </Row>
+
+    </Container>
+
+</RegisterPage>
 
     );
   }

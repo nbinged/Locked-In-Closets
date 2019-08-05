@@ -135,14 +135,16 @@ module.exports = (dbPoolInstance) => {
 
     let editSingleItem = (form, itemID, callback)=> {
 
-        console.log('models form:',form)
-        console.log('itemID',itemID)
+        console.log('modelssssssssssssssssssssssssss.form:',form)
+        console.log('itemIDDDDDDDDDDDDDDDDDDDDDDDDD',itemID)
 
-        let query = 'UPDATE clothing SET item_name = ($1) item_brand = ($2) item_size = ($3) item_color = ($4) item_catergories = ($5) image_file = ($6) WHERE id = ($7) RETURNING *';
+        let query = 'UPDATE clothing SET item_name = $1, item_brand = $2, item_size = $3, item_color = $4, item_catergories = $5, image_file = $6 WHERE id = $7 RETURNING *';
 
         let values = [form.item_name, form.item_brand, form.item_size, form.item_color, form.item_catergories, form.image_file, itemID];
 
         dbPoolInstance.query(query,values, (error, queryResult) => {
+
+            // console.log('queryResultttttttttttttttttttt',queryResult)
 
             if (error) {
                 callback(error, null);
@@ -150,7 +152,7 @@ module.exports = (dbPoolInstance) => {
 
             } else {
                 if (queryResult.rows.length > 0) {
-                    callback(null, queryResult.rows);
+                    callback(null, queryResult.rows[0]);
                     console.log('IT WORKS FINALLY')
 
                 } else {
@@ -162,8 +164,9 @@ module.exports = (dbPoolInstance) => {
     };
 
     let deleteSingleItem = (clothing_id, callback)=>{
-        let query = "DELETE * FROM clothing WHERE id = $1";
+        let query = "DELETE FROM clothing WHERE id = $1 RETURNING id";
         let values = [clothing_id];
+        console.log(values)
 
         dbPoolInstance.query(query,values,(error, queryResult) => {
 
@@ -173,6 +176,7 @@ module.exports = (dbPoolInstance) => {
             } else {
 
                 callback(null, true);
+                console.log("Something got deleted")
             }
         });
     }
@@ -184,9 +188,9 @@ module.exports = (dbPoolInstance) => {
         viewSingleItem,
         viewEditSingleItem,
         viewDeleteItem,
-
-        ////DONT EDIT ANYTHING ABOVE///////
         editSingleItem,
         deleteSingleItem
+
+        ////DONT EDIT ANYTHING ABOVE///////
     };
 };

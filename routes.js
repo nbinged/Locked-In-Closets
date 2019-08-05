@@ -45,11 +45,11 @@ module.exports = (app, allModels) => {
 
     app.get('/item/:id', controllerCallbacks.getViewedItem);
 
+    app.put('/item/:id/edit', controllerCallbacks.editItem);
     app.get('/item/:id/edit', controllerCallbacks.getEditItem);
 
-///////////DONT TOUCH ABOVE/////////////////////////////
 
-    app.put('/item/:id/edit', controllerCallbacks.editItem);
+///////////DONT TOUCH ABOVE/////////////////////////////
 
     app.get('/item/:id/delete', controllerCallbacks.getDeleteItem);
     app.delete('/item/:id/delete', controllerCallbacks.deleteItem);

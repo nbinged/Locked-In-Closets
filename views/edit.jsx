@@ -1,24 +1,30 @@
 const React = require('react');
 var Default = require('./layouts/default');
+import { Container, Row, Col } from 'reactstrap';
 
 class edit extends React.Component {
   render() {
 
     let props = this.props.allclothes;
     let urlItem = '/item/';
-    let urlEdit = '/edit?_';
+    let urlEdit = '/edit?';
     let id = parseInt(props.id);
-    let put = 'method=PUT';
+    let put = '_method=PUT';
 
-    console.log('propssssssssssssssssssssss',this.props.allclothes)
+    console.log('HELLO FROM EDIT JSXXXXXXXXXXXXXXXXXXXX',this.props.allclothes)
 
     return (
 
     <Default>
+
+        <Container>
+
             <h1>Edit Clothes Form</h1>
             <h3>Please enter the details of the item of clothing you would like to edit.</h3>
 
-            <form enctype="multipart/form-data" action={urlItem + id + urlEdit + put } method="POST">
+                <img src ={props.image_file}/>
+
+            <form action={urlItem + id + urlEdit + put } method="POST">
 
                 <p>Item Name:</p>
                 <input type="text" name="item_name" defaultValue={props.item_name}/>
@@ -44,6 +50,7 @@ class edit extends React.Component {
                 <input type="submit" class="btn btn-primary"/>
 
             </form>
+        </Container>
 
     </Default>
 

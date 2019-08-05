@@ -12,6 +12,7 @@
   "dependencies": {
     "@material-ui/core": "^4.3.0",
     "@material-ui/icons": "^4.2.1",
+    "body-parse": "^0.1.0",
     "cloudinary": "^1.14.0",
     "cookie-parser": "^1.4.3",
     "express": "^4.17.1",
