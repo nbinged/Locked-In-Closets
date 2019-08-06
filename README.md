@@ -27,3 +27,4 @@ Outfits. Where users can select the clothing items the users want to fit into an
 - - - - - 
 
 Wireframe:
+https://imgur.com/a/KZuUchr
