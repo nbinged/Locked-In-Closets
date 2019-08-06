@@ -20,15 +20,16 @@ class Delete extends React.Component {
         <body>
 
             <Row>
-                <Col sm="12" md={{ size: 6, offset: 4 }}>
+                 <Col className="column-center" sm="12" md={{ size: 6, offset: 3 }}>
 
                 <img className="item-image" src ={props.image_file}/>
 
-                <div className="request-text"><h2>Are you sure you would like to delete <strong>{props.item_name}</strong>?</h2>
+                <div className="request-text"><h2>Are you sure you would like to <font color="red"><strong>delete</strong></font> <strong>{props.item_name}</strong>?</h2>
                 </div>
 
              <br/>
 
+             <Form action={urlItem + id + urlDelete + put} method="POST">
 
              <ListGroup>
                     <ListGroupItem>
@@ -52,13 +53,14 @@ class Delete extends React.Component {
                     </ListGroupItem>
               </ListGroup>
 
-                    <br/>
+              <br/>
 
-                <Form action={urlItem + id + urlDelete + put} method="POST">
-
-                <Button className="item-buttons" type={"submit"} color="danger" size="lg">Delete this item</Button>
+                <Button type={"submit"} color="danger" size="lg" block>Delete this item</Button>
 
                 </Form>
+
+
+                             <br/>
 
                         </Col>
                     </Row>

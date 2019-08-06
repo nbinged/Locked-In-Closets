@@ -19,7 +19,7 @@ class item extends React.Component {
              <body>
 
                  <Row>
-                    <Col sm="12" md={{ size: 6, offset: 4 }}>
+                    <Col className="column-center" sm="12" md={{ size: 6, offset: 3 }}>
 
                     <img className="item-image" src ={requestedclothes.image_file}/>
 

@@ -1,6 +1,6 @@
 const React = require('react');
 var Default = require('./layouts/default');
-import { Container, Row, Col } from 'reactstrap';
+import { Container, Row, Col, Button, Form, FormGroup, Label, Input, FormText, Card, CardBody, CardTitle, CardText, CardImg, ListGroup, ListGroupItem } from 'reactstrap';
 
 class edit extends React.Component {
   render() {
@@ -15,40 +15,58 @@ class edit extends React.Component {
 
     <Default>
 
-        <Container>
+        <body>
 
-            <h1>Edit Clothes Form</h1>
-            <h3>Please enter the details of the item of clothing you would like to edit.</h3>
+            <Row>
 
-                <img src ={props.image_file}/>
+                <Col className="column-center" sm="12" md={{ size: 6, offset: 3 }}>
 
-            <form action={urlItem + id + urlEdit + put } method="POST">
+                <img className="item-image" src ={props.image_file}/>
 
-                <p>Item Name:</p>
-                <input type="text" name="item_name" defaultValue={props.item_name}/>
+                    <div className="request-text"><h2>You have requested to <font color="orange"><strong>edit:</strong></font> <strong>{props.item_name}</strong></h2>
+                    </div>
 
-                <p>Brand:</p>
-                <input type="text" name="item_brand" defaultValue={props.item_brand}/>
+        <Form action={urlItem + id + urlEdit + put } method="POST">
 
-                <p>Size:</p>
-                <input type="text" name="item_size" defaultValue={props.item_size}/>
+          <FormGroup>
+              <Label for="item-name"><strong>Name:</strong></Label>
+              <Input type="text" name="item_name" defaultValue={props.item_name}/>
+            </FormGroup>
 
-                <p>Color:</p>
-                <input type="text" name="item_color" defaultValue={props.item_color}/>
+            <FormGroup>
+              <Label for="item-brand"><strong>Brand:</strong></Label>
+              <Input type="text" name="item_brand" defaultValue={props.item_brand}/>
+            </FormGroup>
 
-                <p>Catergories:</p>
-                <input type="text" name="item_catergories" defaultValue={props.item_catergories} />
+            <FormGroup>
+              <Label for="item-size"><strong>Size:</strong></Label>
+              <Input type="text" name="item_size" defaultValue={props.item_size}/>
+            </FormGroup>
 
-                <p>Change the picture</p>
-                <input type="text" name="image_file" defaultValue={props.image_file} />
+            <FormGroup>
+              <Label for="item-color"><strong>Color:</strong></Label>
+              <Input type="text" name="item_color" defaultValue={props.item_color}/>
+            </FormGroup>
 
-                <br/>
-                <br/>
+            <FormGroup>
+              <Label for="item-categories"><strong>Catergories:</strong></Label>
+              <Input type="text" name="item_catergories" defaultValue={props.item_catergories}/>
+            </FormGroup>
 
-                <input type="submit" class="btn btn-primary"/>
+            <FormGroup>
+              <Label for="image_file"><strong>Image URL:</strong></Label>
+              <Input type="text" name="image_file" defaultValue={props.image_file}/>
+            </FormGroup>
 
-            </form>
-        </Container>
+            <Button color="warning" input type="submit" size="lg" block>Submit</Button>
+
+        </Form>
+
+                     <br/>
+
+                    </Col>
+                </Row>
+        </body>
 
     </Default>
 

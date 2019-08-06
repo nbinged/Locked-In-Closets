@@ -55,7 +55,7 @@ class home extends React.Component {
          </Row>
 
          <Row className="welcome-text">
-            <h2><strong>Welcome to your wardrobe, {username}.</strong></h2>
+            <h2><strong>Welcome to your wardrobe, <font color="#11607E">{username}</font>.</strong></h2>
         </Row>
 
         <Form action="" className="welcome-buttons">
@@ -68,6 +68,8 @@ class home extends React.Component {
         <Row className="cardHolder">
                 {clothesListing}
         </Row>
+
+        <br/>
 
         </body>
 
