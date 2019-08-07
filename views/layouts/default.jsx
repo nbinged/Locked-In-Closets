@@ -38,14 +38,6 @@ class Default extends React.Component {
                                 </li>
 
                                 <li className="nav-item">
-                                    <a className="nav-link" href="/outfits">Outfits</a>
-                                </li>
-
-                                <li className="nav-item">
-                                    <a className="nav-link" href="/lookbook">Lookbook</a>
-                                </li>
-
-                                <li className="nav-item">
                                     <a className="nav-link" href="/logout">Logout</a>
                                 </li>
 
@@ -69,3 +61,12 @@ module.exports = Default;
 //     <div class="container text-center">
 //     <small>&copy; Locked In Closets</small></div>
 // </footer>
+
+
+                                // <li className="nav-item">
+                                //     <a className="nav-link" href="/outfits">Outfits</a>
+                                // </li>
+
+                                // <li className="nav-item">
+                                //     <a className="nav-link" href="/lookbook">Lookbook</a>
+                                // </li>

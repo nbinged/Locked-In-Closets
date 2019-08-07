@@ -62,7 +62,6 @@ class home extends React.Component {
 
                 <Button className="clothes" formaction={addItemURL} type={"submit"} color="success" size="lg">Add new Clothes</Button>
 
-                <Button className="outfit" formaction={addOutfitURL} type={"submit"} color="success" size="lg">Create a new Outfit</Button>
         </Form>
 
         <Row className="cardHolder">
@@ -70,6 +69,7 @@ class home extends React.Component {
         </Row>
 
         <br/>
+<<<<<<< HEAD
 
         </body>
 
@@ -129,7 +129,10 @@ class home extends React.Component {
 
 
 
+=======
+>>>>>>> a4d4fe1cb86e83203926627c8a46ccb08b15d72a
 
+        </body>
 
     </Default>
 
@@ -138,4 +141,4 @@ class home extends React.Component {
 
 module.exports = home;
 
-
+// <Button className="outfit" formaction={addOutfitURL} type={"submit"} color="success" size="lg">Create a new Outfit</Button>
