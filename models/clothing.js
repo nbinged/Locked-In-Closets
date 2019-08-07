@@ -129,14 +129,10 @@ module.exports = (dbPoolInstance) => {
         });
     }
 
-/////////////////////////////
-/////DONT TOUCH ABOVE ITEMS//
-/////////////////////////////
-
     let editSingleItem = (form, itemID, callback)=> {
 
-        console.log('modelssssssssssssssssssssssssss.form:',form)
-        console.log('itemIDDDDDDDDDDDDDDDDDDDDDDDDD',itemID)
+        // console.log('modelssssssssssssssssssssssssss.form:',form)
+        // console.log('itemIDDDDDDDDDDDDDDDDDDDDDDDDD',itemID)
 
         let query = 'UPDATE clothing SET item_name = $1, item_brand = $2, item_size = $3, item_color = $4, item_catergories = $5, image_file = $6 WHERE id = $7 RETURNING *';
 

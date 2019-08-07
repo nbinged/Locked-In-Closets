@@ -12,7 +12,7 @@ class LoginPage extends React.Component {
             <html>
 
             <head>
-                <title>LIC</title>
+                <title>Login</title>
 
                 <link rel="icon" href="/favicon.png" type="image/png" sizes="16x16"/>
                 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"

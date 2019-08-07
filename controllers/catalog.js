@@ -256,15 +256,13 @@ module.exports = (db) => {
         getViewedItem: getViewedItemControllerCallback,
 
         getEditItem: editViewedItemControllerCallback,
+        editItem: editItemControllerCallback,
 
         getDeleteItem: deleteViewedItemControllerCallback,
+        deleteItem: deleteItemControllerCallback
 
         //////////////DONT TOUCH ABOVE/////////////////
 
-        editItem: editItemControllerCallback,
-        deleteItem: deleteItemControllerCallback
-
-        /////////////THOSE ABOVE DONT WORK YET/////////
     };
 
 }
