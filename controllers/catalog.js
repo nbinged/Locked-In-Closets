@@ -20,6 +20,11 @@ module.exports = (db) => {
      * ===========================================
      */
 
+
+     let indexControllerCallback = (request, response) => {
+      response.redirect('register');
+    };
+
     let showRegisterControllerCallback = (request, response) => {
       response.render('register');
     };
@@ -240,6 +245,10 @@ module.exports = (db) => {
      */
 
     return {
+
+
+
+        index: indexControllerCallback,
 
         showRegister: showRegisterControllerCallback,
         register: registerControllerCallback,

@@ -69,68 +69,6 @@ class home extends React.Component {
         </Row>
 
         <br/>
-<<<<<<< HEAD
-
-        </body>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-=======
->>>>>>> a4d4fe1cb86e83203926627c8a46ccb08b15d72a
 
         </body>
 

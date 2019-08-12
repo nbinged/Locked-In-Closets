@@ -30,6 +30,7 @@ module.exports = (app, allModels) => {
     // require the controller
     const controllerCallbacks = require('./controllers/catalog')(allModels);
 
+    app.get('/', controllerCallbacks.index);
     app.get('/register', controllerCallbacks.showRegister);
     app.post('/register', controllerCallbacks.register);
 
@@ -47,10 +48,6 @@ module.exports = (app, allModels) => {
 
     app.put('/item/:id/edit', controllerCallbacks.editItem);
     app.get('/item/:id/edit', controllerCallbacks.getEditItem);
-
-
-///////////DONT TOUCH ABOVE/////////////////////////////
-
     app.get('/item/:id/delete', controllerCallbacks.getDeleteItem);
     app.delete('/item/:id/delete', controllerCallbacks.deleteItem);
 };
