@@ -190,3 +190,40 @@ module.exports = (dbPoolInstance) => {
         ////DONT EDIT ANYTHING ABOVE///////
     };
 };
+
+
+// let sortAll = (requestdata, callback) =>{
+//         console.log("entering model sortAll");
+//         console.log("req data in model sortAll: ", requestdata);
+//         let user_id = parseInt(requestdata.cookies.userid);
+//         let query = `SELECT * FROM items WHERE user_id = ${user_id} ORDER BY ${requestdata.query.parameter} ${requestdata.query.order}`;
+
+//         dbPoolInstance.query(query, (err, result) =>{
+//             if(err){
+//                 callback(err, null);
+//             } else if (result.rows.length > 0){
+//                 callback(null, result.rows);
+//             } else {
+//                 callback(null, null);
+//             };
+//         });
+//     };
+
+//     // ~* does a case insensitive = sear_ch;
+//     let search = (requestdata, callback) =>{
+//         console.log("entering model search");
+//         console.log("req data in model search: ", requestdata);
+//         let user_id = requestdata.user_id;
+//         let values = [requestdata.query.search, user_id];
+//         let query = `SELECT * FROM items WHERE name ~* $1 AND user_id = $2`;
+
+//         dbPoolInstance.query(query, values, (err, result) =>{
+//             if(err){
+//                 callback(err, null);
+//             } else if (result.rows.length > 0){
+//                 callback(null, result.rows);
+//             } else {
+//                 callback(null, null);
+//             };
+//         });
+//     };
