@@ -1,6 +1,6 @@
 # Locked In Closets
 
-<img src="public/screenshot.jpg">
+<img src="public/screenshot.png">
 
 <b>Url:</b> https://locked-in-closets.herokuapp.com/register
 
