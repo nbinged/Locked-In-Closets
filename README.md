@@ -8,7 +8,7 @@
 For those with too many clothes and shoes, remembering what clothes' one has can be quite a challenge. Thus having a digital database of your clothes can be very useful in seeing what one has. It can be used for planning outfits for various occasions and seasons.
 
 ## Functions:
-It works as a CRUD(Create, read, update and delete) app with RESTful routes built upon the framework MVC using expressJS and NodeJS and PostgreSQL for database.
+It works as a CRUD(Create, read, update and delete) app with RESTful routes built upon the framework MVC using expressJS and NodeJS. Using React for the front-end and PostgreSQL for the database.
 
 Users can submit a form to add their clothes into the database. For example, some of the form items are name, brand, colour, categories etc. Hence users can use it to organize and sort their clothing based on type, colour etc.
 
