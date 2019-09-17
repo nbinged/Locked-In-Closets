@@ -1,5 +1,14 @@
+body {
+    overflow-x:hidden
+}
+
 h1 {
     font-size: -webkit-xxx-large;
+}
+
+.col {
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
 .navbar-nav.navbar-center.navbar-brand {
