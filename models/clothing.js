@@ -13,6 +13,7 @@ module.exports = (dbPoolInstance) => {
         let query = 'SELECT * FROM clothing WHERE username = $1';
         let values = [username];
 
+
         dbPoolInstance.query(query,values, (error, queryResult) => {
             if (error) {
 

@@ -20,7 +20,6 @@ module.exports = (db) => {
      * ===========================================
      */
 
-
      let indexControllerCallback = (request, response) => {
       response.redirect('register');
     };
@@ -85,6 +84,7 @@ module.exports = (db) => {
     let homepageControllerCallback = (request, response) => {
         let cookieName = request.cookies.username;
         let storedCookie = request.cookies.logged_in;
+        let sessionCookieCheck = sha256(cookieName+'loggedin'+SALT)
 
         if (storedCookie === undefined) {
             response.send('please log in!')
@@ -95,8 +95,6 @@ module.exports = (db) => {
                     console.log("error in getting file", error);
 
                 } else {
-
-                    let sessionCookieCheck = sha256(cookieName+'loggedin'+SALT)
 
                     if ( storedCookie === sessionCookieCheck ) {
                             let data = {

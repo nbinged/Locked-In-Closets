@@ -3,11 +3,11 @@
  * Export model functions as a module
  * ===========================================
  */
-const SALT = "salt";
+const SALT = "salty";
 var sha256 = require('js-sha256');
 module.exports = (dbPoolInstance) => {
 
-    // `dbPoolInstance` is accessible within this function scope
+// `dbPoolInstance` is accessible within this function scope
 
 //Adds the register page, form input data in to the database.
 
