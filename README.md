@@ -31,10 +31,18 @@ It also features user image upload for pictures of their own clothing. Cloudinar
   
 ## Installation Instructions:
 1. Installs all the dependencies of the project using </br>
-`npm install`
+```
+npm install
+```
 2. Create the Postgres db for running on local </br>
-`createdb DATABASE_NAME -U USERNAME`
+```
+createdb DATABASE_NAME -U USERNAME
+```
 3. Creates the tables neccessary to run this project </br>
-`psql -d DATABASE_NAME -U USERNAME -f tables.sql`
+```
+psql -d DATABASE_NAME -U USERNAME -f tables.sql
+```
 4. Seed dummy data </br>
-`psql -d DATABASE_NAME -U USERNAME -f seed.sql`
+```
+psql -d DATABASE_NAME -U USERNAME -f seed.sql
+```
