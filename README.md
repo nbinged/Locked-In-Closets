@@ -1,4 +1,4 @@
-# GA SEI Project 2- Locked In Closets
+Locked In Closets
 
 Title: Locked In Closets
 
