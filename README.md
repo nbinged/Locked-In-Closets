@@ -1,8 +1,8 @@
-Locked In Closets
+# Locked In Closets
 
-Title: Locked In Closets
+<img src="public/images/screenshot.jpg">
 
-Url: https://locked-in-closets.herokuapp.com/register
+<b>Url:</b> https://locked-in-closets.herokuapp.com/register
 
 A digital wardrobe management web application. Organize and digitize your wardrobe.
 
