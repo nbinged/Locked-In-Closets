@@ -2,7 +2,7 @@
 
 <img src="public/screenshot.png">
 
- <p><b>General Assembly, Software Engineering Immersive:</b> Project 2</p>
+ <p><b>GA's Software Engineering Immersive:</b> Project 2</p>
  <p><b>Url:</b> https://locked-in-closets.herokuapp.com</p>
 
 ## Objective:
